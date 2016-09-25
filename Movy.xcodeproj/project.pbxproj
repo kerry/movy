@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24811BF9DFBF387184B1665A /* Pods_Movy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */; };
 		C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D34E1D970D730007BA61 /* AppDelegate.swift */; };
-		C975D3511D970D730007BA61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3501D970D730007BA61 /* ViewController.swift */; };
+		C975D3511D970D730007BA61 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3501D970D730007BA61 /* HomeViewController.swift */; };
 		C975D3541D970D730007BA61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C975D3521D970D730007BA61 /* Main.storyboard */; };
 		C975D3561D970D730007BA61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C975D3551D970D730007BA61 /* Assets.xcassets */; };
 		C975D3591D970D730007BA61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C975D3571D970D730007BA61 /* LaunchScreen.storyboard */; };
 		C975D3641D970D740007BA61 /* MovyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3631D970D740007BA61 /* MovyTests.swift */; };
 		C975D36F1D970D740007BA61 /* MovyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D36E1D970D740007BA61 /* MovyUITests.swift */; };
+		C975D37D1D9715750007BA61 /* MovyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */; };
+		C975D37F1D9716270007BA61 /* fight_club.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C975D37E1D9716270007BA61 /* fight_club.jpg */; };
+		C975D3811D971B1A0007BA61 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3801D971B1A0007BA61 /* RestService.swift */; };
+		C975D3831D971BB30007BA61 /* MovieListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3821D971BB30007BA61 /* MovieListResponseDto.swift */; };
+		C975D3861D971C4A0007BA61 /* MovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3851D971C4A0007BA61 /* MovieItem.swift */; };
+		C9A1728C1D97AA0900FD8ACE /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1728B1D97AA0900FD8ACE /* ImageService.swift */; };
+		C9A172911D97AAFF00FD8ACE /* ApplicationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A172901D97AAFF00FD8ACE /* ApplicationSettings.swift */; };
+		C9A172931D97BD0700FD8ACE /* MovieSearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A172921D97BD0700FD8ACE /* MovieSearchResultsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		412AB24A8ED07DE292F84465 /* Pods-Movy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movy/Pods-Movy.release.xcconfig"; sourceTree = "<group>"; };
 		C975D34B1D970D730007BA61 /* Movy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975D34E1D970D730007BA61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C975D3501D970D730007BA61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C975D3501D970D730007BA61 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C975D3531D970D730007BA61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C975D3551D970D730007BA61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C975D3581D970D730007BA61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +58,15 @@
 		C975D36A1D970D740007BA61 /* MovyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975D36E1D970D740007BA61 /* MovyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovyUITests.swift; sourceTree = "<group>"; };
 		C975D3701D970D740007BA61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovyCollectionViewCell.swift; sourceTree = "<group>"; };
+		C975D37E1D9716270007BA61 /* fight_club.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fight_club.jpg; sourceTree = "<group>"; };
+		C975D3801D971B1A0007BA61 /* RestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
+		C975D3821D971BB30007BA61 /* MovieListResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListResponseDto.swift; sourceTree = "<group>"; };
+		C975D3851D971C4A0007BA61 /* MovieItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieItem.swift; sourceTree = "<group>"; };
+		C9A1728B1D97AA0900FD8ACE /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		C9A172901D97AAFF00FD8ACE /* ApplicationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSettings.swift; sourceTree = "<group>"; };
+		C9A172921D97BD0700FD8ACE /* MovieSearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchResultsTableViewController.swift; sourceTree = "<group>"; };
+		C9E5316C494831A460BEE56D /* Pods-Movy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movy/Pods-Movy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24811BF9DFBF387184B1665A /* Pods_Movy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +95,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0679066C53641EF949614354 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9E5316C494831A460BEE56D /* Pods-Movy.debug.xcconfig */,
+				412AB24A8ED07DE292F84465 /* Pods-Movy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9FB0949ADF3BE60EABF07559 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C975D3421D970D730007BA61 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				C975D3621D970D740007BA61 /* MovyTests */,
 				C975D36D1D970D740007BA61 /* MovyUITests */,
 				C975D34C1D970D730007BA61 /* Products */,
+				0679066C53641EF949614354 /* Pods */,
+				9FB0949ADF3BE60EABF07559 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,11 +138,12 @@
 			isa = PBXGroup;
 			children = (
 				C975D34E1D970D730007BA61 /* AppDelegate.swift */,
-				C975D3501D970D730007BA61 /* ViewController.swift */,
-				C975D3521D970D730007BA61 /* Main.storyboard */,
-				C975D3551D970D730007BA61 /* Assets.xcassets */,
-				C975D3571D970D730007BA61 /* LaunchScreen.storyboard */,
-				C975D35A1D970D730007BA61 /* Info.plist */,
+				C9A1728E1D97AA2400FD8ACE /* controllers */,
+				C9A1728F1D97AA3C00FD8ACE /* resources */,
+				C9A1728D1D97AA1D00FD8ACE /* views */,
+				C9A1728A1D97A9F200FD8ACE /* services */,
+				C975D3841D971BB70007BA61 /* models */,
+				C9A172901D97AAFF00FD8ACE /* ApplicationSettings.swift */,
 			);
 			path = Movy;
 			sourceTree = "<group>";
@@ -125,6 +166,53 @@
 			path = MovyUITests;
 			sourceTree = "<group>";
 		};
+		C975D3841D971BB70007BA61 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				C975D3821D971BB30007BA61 /* MovieListResponseDto.swift */,
+				C975D3851D971C4A0007BA61 /* MovieItem.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		C9A1728A1D97A9F200FD8ACE /* services */ = {
+			isa = PBXGroup;
+			children = (
+				C975D3801D971B1A0007BA61 /* RestService.swift */,
+				C9A1728B1D97AA0900FD8ACE /* ImageService.swift */,
+			);
+			name = services;
+			sourceTree = "<group>";
+		};
+		C9A1728D1D97AA1D00FD8ACE /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C975D3571D970D730007BA61 /* LaunchScreen.storyboard */,
+				C975D3521D970D730007BA61 /* Main.storyboard */,
+				C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		C9A1728E1D97AA2400FD8ACE /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C975D3501D970D730007BA61 /* HomeViewController.swift */,
+				C9A172921D97BD0700FD8ACE /* MovieSearchResultsTableViewController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		C9A1728F1D97AA3C00FD8ACE /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				C975D3551D970D730007BA61 /* Assets.xcassets */,
+				C975D35A1D970D730007BA61 /* Info.plist */,
+				C975D37E1D9716270007BA61 /* fight_club.jpg */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C975D3731D970D740007BA61 /* Build configuration list for PBXNativeTarget "Movy" */;
 			buildPhases = (
+				AC3BA56B34EB37CE51CBE0E4 /* Check Pods Manifest.lock */,
 				C975D3471D970D730007BA61 /* Sources */,
 				C975D3481D970D730007BA61 /* Frameworks */,
 				C975D3491D970D730007BA61 /* Resources */,
+				4A8E0C0613F89C941715CA02 /* Embed Pods Frameworks */,
+				95755DECA2CDD0548C408401 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,17 +285,20 @@
 					C975D34A1D970D730007BA61 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7L6554WU68;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					C975D35E1D970D740007BA61 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7L6554WU68;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C975D34A1D970D730007BA61;
 					};
 					C975D3691D970D740007BA61 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7L6554WU68;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C975D34A1D970D730007BA61;
 					};
@@ -235,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C975D37F1D9716270007BA61 /* fight_club.jpg in Resources */,
 				C975D3591D970D730007BA61 /* LaunchScreen.storyboard in Resources */,
 				C975D3561D970D730007BA61 /* Assets.xcassets in Resources */,
 				C975D3541D970D730007BA61 /* Main.storyboard in Resources */,
@@ -257,13 +352,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A8E0C0613F89C941715CA02 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movy/Pods-Movy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95755DECA2CDD0548C408401 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movy/Pods-Movy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC3BA56B34EB37CE51CBE0E4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C975D3471D970D730007BA61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C975D3511D970D730007BA61 /* ViewController.swift in Sources */,
+				C975D3831D971BB30007BA61 /* MovieListResponseDto.swift in Sources */,
+				C9A172911D97AAFF00FD8ACE /* ApplicationSettings.swift in Sources */,
+				C975D37D1D9715750007BA61 /* MovyCollectionViewCell.swift in Sources */,
+				C9A172931D97BD0700FD8ACE /* MovieSearchResultsTableViewController.swift in Sources */,
+				C975D3511D970D730007BA61 /* HomeViewController.swift in Sources */,
+				C975D3861D971C4A0007BA61 /* MovieItem.swift in Sources */,
 				C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */,
+				C975D3811D971B1A0007BA61 /* RestService.swift in Sources */,
+				C9A1728C1D97AA0900FD8ACE /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +486,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -386,6 +537,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -413,10 +565,13 @@
 		};
 		C975D3741D970D740007BA61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9E5316C494831A460BEE56D /* Pods-Movy.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7L6554WU68;
 				INFOPLIST_FILE = Movy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = prateekgrover.Movy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,10 +581,13 @@
 		};
 		C975D3751D970D740007BA61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 412AB24A8ED07DE292F84465 /* Pods-Movy.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7L6554WU68;
 				INFOPLIST_FILE = Movy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = prateekgrover.Movy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -514,6 +672,7 @@
 				C975D3751D970D740007BA61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C975D3761D970D740007BA61 /* Build configuration list for PBXNativeTarget "MovyTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +681,7 @@
 				C975D3781D970D740007BA61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C975D3791D970D740007BA61 /* Build configuration list for PBXNativeTarget "MovyUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +690,7 @@
 				C975D37B1D970D740007BA61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
