@@ -11,9 +11,9 @@ import UIKit
 
 class ApplicationSettings{
     
-    public static var SCREEN_WIDTH:CGFloat?
-    public static var SCREEN_ORIENTATION:UIInterfaceOrientation?
-    public static let NO_COLUMNS = 2
+    static var SCREEN_WIDTH:CGFloat?
+    static var SCREEN_ORIENTATION:UIInterfaceOrientation?
+    static let NO_COLUMNS = 2
     
     internal static func resetScreenSizeConstants(){
         if UIInterfaceOrientationIsPortrait(getScreenOrientation()) {

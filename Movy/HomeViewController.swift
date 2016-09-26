@@ -8,22 +8,31 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchControllerDelegate, UISearchResultsUpdating, UIScrollViewDelegate {
     
     @IBOutlet weak var movieCollectionView: UICollectionView!
-    @IBOutlet weak var moviewCollectionViewFlowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var movieCollectionViewFlowLayout: UICollectionViewFlowLayout!
+    
+    @IBOutlet weak var sortPickerView: UIPickerView!
+    
+    @IBOutlet weak var sortOrderTextField: UITextField!
     
     var MOVIE_POSTER_ITEM_SIZE:CGSize?
     var movieSearchController : UISearchController!
+    var currentPage:Int = 1
     
-    //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    var tempNumberOfCells = 10
+    
+    var loadMoreButton:UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.sortPickerView.delegate = self
+        self.sortPickerView.dataSource = self
+        self.sortOrderTextField.inputView = self.sortPickerView
         ApplicationSettings.resetScreenSizeConstants()
-        RestService().getMovieListByPopularity()
         self.initializeSearchController()
+        self.fetchMovies(page: currentPage)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,23 +48,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         self.movieSearchController.searchResultsUpdater = self
         self.movieSearchController.delegate = self
-        self.movieSearchController.searchBar.delegate = self
         self.movieSearchController.hidesNavigationBarDuringPresentation = false
         self.movieSearchController.dimsBackgroundDuringPresentation = true
         self.movieSearchController.searchBar.placeholder = "Search movies"
-        
-        self.movieSearchController.searchBar.delegate = self
-        self.movieSearchController.delegate = self
-        self.movieSearchController.searchResultsUpdater = self
         
         self.navigationItem.titleView = self.movieSearchController.searchBar
         
         self.definesPresentationContext = true
     }
     
+    fileprivate func fetchMovies(page:Int){
+        RestService.sharedInstance.getMovieListByPopularity(page: page) { (movieListResponse:MovieListResponseDto?, error:Error?) in
+            
+            if error == nil && movieListResponse != nil{
+                self.currentPage += 1
+                //reload collection view
+            }
+        }
+    }
+    
     public func updateSearchResults(for searchController: UISearchController) {
-        let searchResults = searchController.searchResultsController as! MovieSearchResultsTableViewController
-        searchResults.tableView.reloadData()
+        let searchResultsController = searchController.searchResultsController as! MovieSearchResultsTableViewController
+        searchResultsController.tableView.reloadData()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -63,7 +77,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.tempNumberOfCells
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,7 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //reset moview poster size on screen orientation change
+        //reset movie poster size on screen orientation change
         if(self.MOVIE_POSTER_ITEM_SIZE != nil){
             return self.MOVIE_POSTER_ITEM_SIZE!
         }else{
@@ -93,6 +107,26 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             return MOVIE_POSTER_ITEM_SIZE!
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        var footerView:LoadMoreFooterView!
+        
+        if kind == UICollectionElementKindSectionFooter {
+            footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "LoadMoreFooterView", for: indexPath) as! LoadMoreFooterView
+            
+            footerView.loadMoreButton.addTarget(self, action: #selector(HomeViewController.loadMoreMovies), for: .touchUpInside)
+        }
+        
+        return footerView;
+    }
+    
+    func loadMoreMovies(){
+        print("fetch")
+        self.fetchMovies(page: self.currentPage)
+        self.tempNumberOfCells += 10
+        self.movieCollectionView.reloadData()
     }
 }
 

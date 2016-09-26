@@ -12,13 +12,21 @@ import AlamofireObjectMapper
 
 class RestService{
     
-    func getMovieListByPopularity(){
+    static let sharedInstance = RestService()
+    
+    func getMovieListByPopularity(page:Int,completionHandler:@escaping (MovieListResponseDto?, _ error:Error?) -> Void){
         
         let URL = "https://api.themoviedb.org/3/movie/popular?api_key=ef0311a4195b185865b08825a6ee7dfd"
         
         Alamofire.request(URL).responseObject { (response: DataResponse<MovieListResponseDto>) in
             let movieListResponse = response.result.value
-            print(movieListResponse?.page)
+            if movieListResponse?.page != nil{
+                //result is nil or some error occured
+                print(movieListResponse?.page)
+                completionHandler(movieListResponse, nil)
+            }else{
+                completionHandler(nil, nil)
+            }
         }
     }
 }
