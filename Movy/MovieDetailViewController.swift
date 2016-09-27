@@ -17,14 +17,17 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var plotSynopsisLabel: UILabel!
     @IBOutlet weak var moviePosterImageView: UIImageView!
+    @IBOutlet weak var imageDownloadingActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.titleLabel.text = self.movieItem?.originalTitle
-        self.userRatingLabel.text = "\(self.movieItem?.voteAverage)"
+        self.userRatingLabel.text = "\((self.movieItem?.voteAverage)!)"
         self.releaseDateLabel.text = self.movieItem?.releaseDate
         self.plotSynopsisLabel.text = self.movieItem?.overview
+        self.moviePosterImageView.image = self.downloadImage(path: self.movieItem.posterPath!)
+        self.imageDownloadingActivityIndicator.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,5 +39,23 @@ class MovieDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = "Details"
+    }
+    
+    func downloadImage(path:String) -> MovyUIImage?{
+        let cachedImage = ImageService.sharedInstance.checkCache(path: path)
+        if cachedImage != nil{
+            self.imageDownloadingActivityIndicator.stopAnimating()
+            return cachedImage
+        }
+        ImageService.sharedInstance.downloadImage(path: path) {[weak self] (downloadedImage:MovyUIImage?) in
+            
+            if downloadedImage != nil{
+                DispatchQueue.main.async {
+                    self?.imageDownloadingActivityIndicator.stopAnimating()
+                    self?.moviePosterImageView.image = downloadedImage
+                }
+            }
+        }
+        return nil
     }
 }

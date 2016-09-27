@@ -8,31 +8,40 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchControllerDelegate, UISearchResultsUpdating, UIScrollViewDelegate {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchControllerDelegate{
     
     @IBOutlet weak var movieCollectionView: UICollectionView!
     @IBOutlet weak var movieCollectionViewFlowLayout: UICollectionViewFlowLayout!
-    
-    @IBOutlet weak var sortPickerView: UIPickerView!
-    
     @IBOutlet weak var sortOrderTextField: UITextField!
     
+    var sortPickerView: UIPickerView!
     var MOVIE_POSTER_ITEM_SIZE:CGSize?
     var movieSearchController : UISearchController!
     var currentPage:Int = 1
-    
-    var tempNumberOfCells = 10
-    
-    var loadMoreButton:UIButton?
+    var movieListToDisplay:[MovieItem] = []
+    var movieListFiltered:[MovieItem] = []
+    var fullMovieList:[MovieItem] = []
+    var currentSortOrder:SortOrder = SortOrder.popularity
+    var queryText:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.sortPickerView = UIPickerView()
         self.sortPickerView.delegate = self
         self.sortPickerView.dataSource = self
         self.sortOrderTextField.inputView = self.sortPickerView
         ApplicationSettings.resetScreenSizeConstants()
         self.initializeSearchController()
-        self.fetchMovies(page: currentPage)
+        self.fetchMovies(sortOrder:self.currentSortOrder, page: currentPage, afresh: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.queryText != nil && !self.queryText!.isEmpty{
+            self.movieSearchController.searchBar.text = self.queryText
+            self.movieSearchController.isActive = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,14 +49,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! MovieDetailViewController
+        destinationVC.movieItem = self.movieListToDisplay[(sender as! IndexPath).item]
+    }
+    
     fileprivate func initializeSearchController(){
-        //initialize searchResultsController where all the results will be shown
-        let movieSearchResultsController = self.storyboard?.instantiateViewController(withIdentifier: "MovieSearchResultsTable") as! MovieSearchResultsTableViewController
-        
-        self.movieSearchController = UISearchController(searchResultsController:  movieSearchResultsController)
+        self.movieSearchController = UISearchController(searchResultsController:  nil)
         
         self.movieSearchController.searchResultsUpdater = self
         self.movieSearchController.delegate = self
+        self.movieSearchController.searchBar.delegate = self
         self.movieSearchController.hidesNavigationBarDuringPresentation = false
         self.movieSearchController.dimsBackgroundDuringPresentation = true
         self.movieSearchController.searchBar.placeholder = "Search movies"
@@ -57,19 +69,34 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.definesPresentationContext = true
     }
     
-    fileprivate func fetchMovies(page:Int){
-        RestService.sharedInstance.getMovieListByPopularity(page: page) { (movieListResponse:MovieListResponseDto?, error:Error?) in
+    internal func fetchMovies(sortOrder:SortOrder ,page:Int, afresh:Bool){
+        if afresh{
+            self.fullMovieList = []
+        }
+        if self.queryText != nil && !self.queryText!.isEmpty{
+            self.movieSearchController.searchBar.text = self.queryText
+            self.movieSearchController.isActive = true
+        }
+        
+        RestService.sharedInstance.getMovieListByPopularity(sortOrder: sortOrder, page: page) { [weak self](movieListResponse:MovieListResponseDto?, error:Error?) in
             
-            if error == nil && movieListResponse != nil{
-                self.currentPage += 1
-                //reload collection view
+            if let strongSelf = self{
+                if error == nil && movieListResponse != nil{
+                    strongSelf.currentPage += 1
+                    strongSelf.fullMovieList.append(contentsOf: movieListResponse!.movieItemList!)
+                    if strongSelf.queryText != nil && !strongSelf.queryText!.isEmpty {
+                        strongSelf.movieListFiltered = strongSelf.fullMovieList.filter() { ($0.originalTitle?.lowercased().contains(strongSelf.queryText!))! }
+                        strongSelf.movieListToDisplay = strongSelf.movieListFiltered
+                    } else {
+                        strongSelf.movieListToDisplay = strongSelf.fullMovieList
+                    }
+                    DispatchQueue.main.async {
+                        //reload collection view
+                        strongSelf.movieCollectionView.reloadData()
+                    }
+                }
             }
         }
-    }
-    
-    public func updateSearchResults(for searchController: UISearchController) {
-        let searchResultsController = searchController.searchResultsController as! MovieSearchResultsTableViewController
-        searchResultsController.tableView.reloadData()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -77,14 +104,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.tempNumberOfCells
+        return self.movieListToDisplay.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let moviePosterCell:MovyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviePosterCell", for: indexPath) as! MovyCollectionViewCell
         
-        moviePosterCell.moviePosterImageView.image = UIImage(named: "fight_club.jpg")
+        let movieItem = self.movieListToDisplay[indexPath.item]
+        
+        moviePosterCell.posterImagePath = movieItem.posterPath!
+        moviePosterCell.moviePosterImageView.image = self.downloadImage(path: movieItem.posterPath!, indexPath: indexPath)
+        moviePosterCell.movieTitleLabel.text = movieItem.originalTitle
+        moviePosterCell.layer.shouldRasterize = true
+        moviePosterCell.layer.rasterizationScale = UIScreen.main.scale
         
         return moviePosterCell
     }
@@ -122,11 +155,32 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return footerView;
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "MoviePosterDetailSegue", sender: indexPath)
+    }
+    
     func loadMoreMovies(){
         print("fetch")
-        self.fetchMovies(page: self.currentPage)
-        self.tempNumberOfCells += 10
-        self.movieCollectionView.reloadData()
+        self.fetchMovies(sortOrder: self.currentSortOrder, page: self.currentPage, afresh: false)
+    }
+    
+    func downloadImage(path:String, indexPath:IndexPath) -> MovyUIImage?{
+        let cachedImage = ImageService.sharedInstance.checkCache(path: path)
+        if cachedImage != nil{
+            return cachedImage
+        }
+        ImageService.sharedInstance.downloadImage(path: path, forCell: indexPath) {[weak self] (downloadedImage:MovyUIImage?, cellIndexPath:IndexPath?) in
+            
+            if downloadedImage != nil && cellIndexPath != nil{
+                let collectionViewCell = self?.movieCollectionView.cellForItem(at: cellIndexPath!) as? MovyCollectionViewCell
+                DispatchQueue.main.async {
+                    if collectionViewCell?.posterImagePath == downloadedImage?.urlPath{
+                        collectionViewCell?.moviePosterImageView.image = downloadedImage
+                    }
+                }
+            }
+        }
+        return nil
     }
 }
 

@@ -9,8 +9,7 @@
 import UIKit
 
 class MovyCollectionViewCell: UICollectionViewCell {
-    
-    
     @IBOutlet weak var moviePosterImageView: UIImageView!
-    
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    var posterImagePath:String?
 }
