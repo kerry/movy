@@ -20,7 +20,6 @@
 		C975D3641D970D740007BA61 /* MovyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3631D970D740007BA61 /* MovyTests.swift */; };
 		C975D36F1D970D740007BA61 /* MovyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D36E1D970D740007BA61 /* MovyUITests.swift */; };
 		C975D37D1D9715750007BA61 /* MovyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */; };
-		C975D37F1D9716270007BA61 /* fight_club.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C975D37E1D9716270007BA61 /* fight_club.jpg */; };
 		C975D3811D971B1A0007BA61 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3801D971B1A0007BA61 /* RestService.swift */; };
 		C975D3831D971BB30007BA61 /* MovieListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3821D971BB30007BA61 /* MovieListResponseDto.swift */; };
 		C975D3861D971C4A0007BA61 /* MovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3851D971C4A0007BA61 /* MovieItem.swift */; };
@@ -67,7 +66,6 @@
 		C975D36E1D970D740007BA61 /* MovyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovyUITests.swift; sourceTree = "<group>"; };
 		C975D3701D970D740007BA61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovyCollectionViewCell.swift; sourceTree = "<group>"; };
-		C975D37E1D9716270007BA61 /* fight_club.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fight_club.jpg; sourceTree = "<group>"; };
 		C975D3801D971B1A0007BA61 /* RestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
 		C975D3821D971BB30007BA61 /* MovieListResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListResponseDto.swift; sourceTree = "<group>"; };
 		C975D3851D971C4A0007BA61 /* MovieItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieItem.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 			children = (
 				C975D3551D970D730007BA61 /* Assets.xcassets */,
 				C975D35A1D970D730007BA61 /* Info.plist */,
-				C975D37E1D9716270007BA61 /* fight_club.jpg */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -357,7 +354,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C975D37F1D9716270007BA61 /* fight_club.jpg in Resources */,
 				C975D3591D970D730007BA61 /* LaunchScreen.storyboard in Resources */,
 				C975D3561D970D730007BA61 /* Assets.xcassets in Resources */,
 				C975D3541D970D730007BA61 /* Main.storyboard in Resources */,
@@ -541,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -586,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

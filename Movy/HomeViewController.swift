@@ -160,7 +160,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func loadMoreMovies(){
-        print("fetch")
         self.fetchMovies(sortOrder: self.currentSortOrder, page: self.currentPage, afresh: false)
     }
     
