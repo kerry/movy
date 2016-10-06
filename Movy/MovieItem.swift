@@ -51,6 +51,10 @@ class MovieItem : Mappable {
         
     }
     
+    init() {
+        
+    }
+    
     func mapping(map: Map){
         posterPath <- map["poster_path"]
         adult <- map["adult"]

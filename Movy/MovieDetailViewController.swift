@@ -11,6 +11,7 @@ import UIKit
 class MovieDetailViewController: UIViewController {
     
     var movieItem:MovieItem!
+    var movieViewModel:MovieViewModel!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userRatingLabel: UILabel!
@@ -26,7 +27,7 @@ class MovieDetailViewController: UIViewController {
         self.userRatingLabel.text = "\((self.movieItem?.voteAverage)!)"
         self.releaseDateLabel.text = self.movieItem?.releaseDate
         self.plotSynopsisLabel.text = self.movieItem?.overview
-        self.moviePosterImageView.image = self.downloadImage(path: self.movieItem.posterPath!)
+        self.setPosterImage()
         self.imageDownloadingActivityIndicator.startAnimating()
     }
 
@@ -41,21 +42,9 @@ class MovieDetailViewController: UIViewController {
         self.navigationItem.title = "Details"
     }
     
-    func downloadImage(path:String) -> MovyUIImage?{
-        let cachedImage = ImageService.sharedInstance.checkCache(path: path)
-        if cachedImage != nil{
-            self.imageDownloadingActivityIndicator.stopAnimating()
-            return cachedImage
-        }
-        ImageService.sharedInstance.downloadImage(path: path) {[weak self] (downloadedImage:MovyUIImage?) in
-            
-            if downloadedImage != nil{
-                DispatchQueue.main.async {
-                    self?.imageDownloadingActivityIndicator.stopAnimating()
-                    self?.moviePosterImageView.image = downloadedImage
-                }
-            }
-        }
-        return nil
+    fileprivate func setPosterImage(){
+        self.moviePosterImageView.image = self.movieViewModel.getImage(forPath: self.movieItem.posterPath!, completionHandler: { [weak self](posterImage:MovyUIImage) in
+            self?.moviePosterImageView.image = posterImage
+        })
     }
 }

@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		24811BF9DFBF387184B1665A /* Pods_Movy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */; };
+		C90F46091DA5BEBB008E5609 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */; };
+		C90F460D1DA5CB83008E5609 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F460C1DA5CB83008E5609 /* Constants.swift */; };
 		C911394D1D98473300FDB120 /* LoadMoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */; };
 		C911394F1D985F8B00FDB120 /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */; };
+		C92E4B401DA5E43F00CE1C5D /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E4B3F1DA5E43F00CE1C5D /* MovieDetailsViewModel.swift */; };
 		C943DC761D99C62C00C6A69C /* SortOrderEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */; };
 		C943DC781D99E8D800C6A69C /* MovyUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943DC771D99E8D800C6A69C /* MovyUIImage.swift */; };
 		C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D34E1D970D730007BA61 /* AppDelegate.swift */; };
@@ -48,8 +51,11 @@
 /* Begin PBXFileReference section */
 		1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		412AB24A8ED07DE292F84465 /* Pods-Movy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movy/Pods-Movy.release.xcconfig"; sourceTree = "<group>"; };
+		C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		C90F460C1DA5CB83008E5609 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooterView.swift; sourceTree = "<group>"; };
 		C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
+		C92E4B3F1DA5E43F00CE1C5D /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortOrderEnum.swift; sourceTree = "<group>"; };
 		C943DC771D99E8D800C6A69C /* MovyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovyUIImage.swift; sourceTree = "<group>"; };
 		C975D34B1D970D730007BA61 /* Movy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +124,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C90F46071DA5BE0C008E5609 /* view-model */ = {
+			isa = PBXGroup;
+			children = (
+				C9A1728A1D97A9F200FD8ACE /* services */,
+				C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */,
+				C92E4B3F1DA5E43F00CE1C5D /* MovieDetailsViewModel.swift */,
+			);
+			name = "view-model";
+			sourceTree = "<group>";
+		};
 		C943DC791D99FC6F00C6A69C /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,13 +143,13 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
-		C943DC7A1D9A087E00C6A69C /* HomeViewController */ = {
+		C943DC7A1D9A087E00C6A69C /* MovieViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C975D3501D970D730007BA61 /* HomeViewController.swift */,
 				C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */,
 			);
-			name = HomeViewController;
+			name = MovieViewController;
 			sourceTree = "<group>";
 		};
 		C975D3421D970D730007BA61 = {
@@ -163,11 +179,10 @@
 			children = (
 				C975D34E1D970D730007BA61 /* AppDelegate.swift */,
 				C9A172901D97AAFF00FD8ACE /* ApplicationSettings.swift */,
-				C9A1728E1D97AA2400FD8ACE /* controllers */,
-				C9A1728F1D97AA3C00FD8ACE /* resources */,
 				C9A1728D1D97AA1D00FD8ACE /* views */,
-				C9A1728A1D97A9F200FD8ACE /* services */,
+				C90F46071DA5BE0C008E5609 /* view-model */,
 				C975D3841D971BB70007BA61 /* models */,
+				C9A1728F1D97AA3C00FD8ACE /* resources */,
 				C943DC791D99FC6F00C6A69C /* utils */,
 			);
 			path = Movy;
@@ -214,6 +229,7 @@
 			children = (
 				C975D3571D970D730007BA61 /* LaunchScreen.storyboard */,
 				C975D3521D970D730007BA61 /* Main.storyboard */,
+				C9A1728E1D97AA2400FD8ACE /* controllers */,
 				C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */,
 				C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */,
 			);
@@ -223,7 +239,7 @@
 		C9A1728E1D97AA2400FD8ACE /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C943DC7A1D9A087E00C6A69C /* HomeViewController */,
+				C943DC7A1D9A087E00C6A69C /* MovieViewController */,
 				C9A172941D97CFFA00FD8ACE /* MovieDetailViewController.swift */,
 			);
 			name = controllers;
@@ -234,6 +250,7 @@
 			children = (
 				C975D3551D970D730007BA61 /* Assets.xcassets */,
 				C975D35A1D970D730007BA61 /* Info.plist */,
+				C90F460C1DA5CB83008E5609 /* Constants.swift */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -434,11 +451,14 @@
 				C9A172911D97AAFF00FD8ACE /* ApplicationSettings.swift in Sources */,
 				C975D37D1D9715750007BA61 /* MovyCollectionViewCell.swift in Sources */,
 				C975D3511D970D730007BA61 /* HomeViewController.swift in Sources */,
+				C90F460D1DA5CB83008E5609 /* Constants.swift in Sources */,
+				C90F46091DA5BEBB008E5609 /* MovieViewModel.swift in Sources */,
 				C975D3861D971C4A0007BA61 /* MovieItem.swift in Sources */,
 				C9A172951D97CFFA00FD8ACE /* MovieDetailViewController.swift in Sources */,
 				C943DC761D99C62C00C6A69C /* SortOrderEnum.swift in Sources */,
 				C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */,
 				C943DC781D99E8D800C6A69C /* MovyUIImage.swift in Sources */,
+				C92E4B401DA5E43F00CE1C5D /* MovieDetailsViewModel.swift in Sources */,
 				C975D3811D971B1A0007BA61 /* RestService.swift in Sources */,
 				C9A1728C1D97AA0900FD8ACE /* ImageService.swift in Sources */,
 				C911394F1D985F8B00FDB120 /* HomeViewControllerExtension.swift in Sources */,

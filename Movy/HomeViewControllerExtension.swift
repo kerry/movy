@@ -17,15 +17,14 @@ extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate, UIP
             return
         }
         self.queryText = queryText
-        self.movieListFiltered = self.fullMovieList.filter() { ($0.originalTitle?.lowercased().contains(queryText!))! }
-        self.movieListToDisplay = self.movieListFiltered
-        self.movieCollectionView.reloadData()
+        self.movieViewModel.updateFilteredMovieList(queryText: self.queryText)
+        self.reloadMoviesCollectionView()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.queryText = ""
-        self.movieListToDisplay = self.fullMovieList
-        self.movieCollectionView.reloadData()
+        self.movieViewModel.updateFilteredMovieList(queryText: self.queryText)
+        self.reloadMoviesCollectionView()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -45,11 +44,25 @@ extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(row)
-        self.currentSortOrder = row == 0 ? SortOrder.popularity : SortOrder.rating
-        self.sortOrderTextField.text = self.currentSortOrder.rawValue
-        self.sortOrderTextField.resignFirstResponder()
-        self.currentPage = 1
-        self.fetchMovies(sortOrder:self.currentSortOrder, page:self.currentPage, afresh: true)
+        let selectedSortOrder = row == 0 ? SortOrder.popularity : SortOrder.rating
+        let tempCurrentState = self.movieViewModel.currentMovieListState
+        if tempCurrentState.currentSortOrder != selectedSortOrder{
+            
+            self.movieViewModel.currentMovieListState.currentSortOrder = selectedSortOrder
+            self.movieViewModel.currentMovieListState.currentPage = 1
+            
+            self.sortOrderTextField.text = selectedSortOrder.rawValue
+            self.sortOrderTextField.resignFirstResponder()
+            //fetch new movies according to new sort order
+            self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText, fetchSuccess: { (success:Bool) in
+                
+                if success{
+                    self.reloadMoviesCollectionView()
+                }else{
+                    //revert back to previous state
+                    self.movieViewModel.currentMovieListState = tempCurrentState
+                }
+            })
+        }
     }
 }
