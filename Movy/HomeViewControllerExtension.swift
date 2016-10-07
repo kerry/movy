@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate{
     
     public func updateSearchResults(for searchController: UISearchController) {
         let queryText = searchController.searchBar.text?.lowercased()
@@ -27,35 +27,15 @@ extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate, UIP
         self.reloadMoviesCollectionView()
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return SortOrder.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if row == 0{
-            return SortOrder.popularity.rawValue
-        }else{
-            return SortOrder.rating.rawValue
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.tempSelectedSortOrder = row == 0 ? SortOrder.popularity : SortOrder.rating
-    }
-    
-    func donePicker(){
-        self.cancelPicker()
+    func sortChanged(){
+        let tempSelectedSortOrder = self.sortSegmentControl.selectedSegmentIndex == 0 ? SortOrder.popularity : SortOrder.rating
         let tempCurrentState = self.movieViewModel.currentMovieListState
-        if tempCurrentState.currentSortOrder != self.tempSelectedSortOrder{
+        
+        if tempCurrentState.currentSortOrder != tempSelectedSortOrder{
             
-            self.movieViewModel.currentMovieListState.currentSortOrder = self.tempSelectedSortOrder
+            self.movieViewModel.currentMovieListState.currentSortOrder = tempSelectedSortOrder
             self.movieViewModel.currentMovieListState.currentPage = 1
             
-            self.sortOrderTextField.text = self.tempSelectedSortOrder.rawValue
             //fetch new movies according to new sort order
             self.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE)
             self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText, fetchSuccess: {[weak self] (success:Bool) in
@@ -64,9 +44,5 @@ extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate, UIP
                 self?.reloadMoviesCollectionView()
             })
         }
-    }
-    
-    func cancelPicker(){
-        self.sortOrderTextField.resignFirstResponder()
     }
 }

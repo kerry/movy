@@ -80,10 +80,10 @@ class MovieViewModel{
         }
     }
     
-    func getImage(forPath posterImagePath:String, completionHandler:@escaping (MovyUIImage) -> Void) -> MovyUIImage?{
+    func getImage(forPath posterImagePath:String, completionHandler:@escaping (MovyUIImage) -> Void){
         let cachedImage = ImageService.sharedInstance.checkCache(path: posterImagePath)
         if cachedImage != nil{
-            return cachedImage
+            completionHandler(cachedImage!)
         }
         ImageService.sharedInstance.downloadImage(path: posterImagePath) { (downloadedImage:MovyUIImage?) in
             
@@ -91,7 +91,6 @@ class MovieViewModel{
                 completionHandler(downloadedImage!)
             }
         }
-        return nil
     }
     
     fileprivate func filterMovieList(queryText:String?, movieListToFilter:[MovieItem]?) -> [MovieItem]?{

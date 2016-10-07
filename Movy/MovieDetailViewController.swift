@@ -28,7 +28,6 @@ class MovieDetailViewController: UIViewController {
         self.releaseDateLabel.text = self.movieItem?.releaseDate
         self.plotSynopsisLabel.text = self.movieItem?.overview
         self.setPosterImage()
-        self.imageDownloadingActivityIndicator.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +39,17 @@ class MovieDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = "Details"
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
     }
     
     fileprivate func setPosterImage(){
-        self.moviePosterImageView.image = self.movieViewModel.getImage(forPath: self.movieItem.posterPath!, completionHandler: { [weak self](posterImage:MovyUIImage) in
-            self?.moviePosterImageView.image = posterImage
+        self.imageDownloadingActivityIndicator.startAnimating()
+        self.movieViewModel.getImage(forPath: self.movieItem.posterPath!, completionHandler: { [weak self](posterImage:MovyUIImage) in
+            if let strongSelf = self{
+                strongSelf.imageDownloadingActivityIndicator.stopAnimating()
+                strongSelf.imageDownloadingActivityIndicator.isHidden = true
+                strongSelf.moviePosterImageView.image = posterImage
+            }
         })
     }
 }

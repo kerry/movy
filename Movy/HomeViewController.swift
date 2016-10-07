@@ -13,10 +13,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var movieCollectionView: UICollectionView!
     @IBOutlet weak var movieCollectionViewFlowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var sortOrderTextField: UITextField!
+    @IBOutlet weak var sortSegmentControl: UISegmentedControl!
     
-    var sortPickerView: UIPickerView!
-    var tempSelectedSortOrder:SortOrder = SortOrder.popularity
     var MOVIE_POSTER_ITEM_SIZE:CGSize?
     var movieSearchController : UISearchController!
     var queryText:String?
@@ -30,7 +28,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initializeMovieList()
-        self.setupSortPickerView()
+        self.setupSort()
         self.initializeSearchController()
     }
     
@@ -62,26 +60,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func setupSortPickerView(){
-        self.sortPickerView = UIPickerView()
-        self.sortPickerView.delegate = self
-        self.sortPickerView.dataSource = self
-        
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        toolBar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(HomeViewController.donePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(HomeViewController.cancelPicker))
-        
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
-        self.sortOrderTextField.inputView = self.sortPickerView
-        self.sortOrderTextField.inputAccessoryView = toolBar
+    func setupSort(){
+        self.sortSegmentControl.addTarget(self, action: #selector(HomeViewController.sortChanged), for: .valueChanged)
     }
     
     func showHUD(message:String){

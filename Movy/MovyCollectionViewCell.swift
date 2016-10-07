@@ -20,7 +20,7 @@ class MovyCollectionViewCell: UICollectionViewCell {
         
         self.movieTitleLabel.text = movieTitle
         self.posterImagePath = moviePosterImagePath
-        self.moviePosterImageView.image = self.movieViewModel.getImage(forPath: moviePosterImagePath, completionHandler: { [weak self](posterImage:MovyUIImage) in
+        self.movieViewModel.getImage(forPath: moviePosterImagePath, completionHandler: { [weak self](posterImage:MovyUIImage) in
             if let strongSelf = self{
                 if posterImage.urlPath == strongSelf.posterImagePath{
                     strongSelf.moviePosterImageView.image = posterImage
