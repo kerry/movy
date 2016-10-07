@@ -12,7 +12,6 @@
 		C90F460D1DA5CB83008E5609 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F460C1DA5CB83008E5609 /* Constants.swift */; };
 		C911394D1D98473300FDB120 /* LoadMoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */; };
 		C911394F1D985F8B00FDB120 /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */; };
-		C92E4B401DA5E43F00CE1C5D /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E4B3F1DA5E43F00CE1C5D /* MovieDetailsViewModel.swift */; };
 		C943DC761D99C62C00C6A69C /* SortOrderEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */; };
 		C943DC781D99E8D800C6A69C /* MovyUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943DC771D99E8D800C6A69C /* MovyUIImage.swift */; };
 		C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D34E1D970D730007BA61 /* AppDelegate.swift */; };
@@ -55,7 +54,6 @@
 		C90F460C1DA5CB83008E5609 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooterView.swift; sourceTree = "<group>"; };
 		C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
-		C92E4B3F1DA5E43F00CE1C5D /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortOrderEnum.swift; sourceTree = "<group>"; };
 		C943DC771D99E8D800C6A69C /* MovyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovyUIImage.swift; sourceTree = "<group>"; };
 		C975D34B1D970D730007BA61 /* Movy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,7 +127,6 @@
 			children = (
 				C9A1728A1D97A9F200FD8ACE /* services */,
 				C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */,
-				C92E4B3F1DA5E43F00CE1C5D /* MovieDetailsViewModel.swift */,
 			);
 			name = "view-model";
 			sourceTree = "<group>";
@@ -458,7 +455,6 @@
 				C943DC761D99C62C00C6A69C /* SortOrderEnum.swift in Sources */,
 				C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */,
 				C943DC781D99E8D800C6A69C /* MovyUIImage.swift in Sources */,
-				C92E4B401DA5E43F00CE1C5D /* MovieDetailsViewModel.swift in Sources */,
 				C975D3811D971B1A0007BA61 /* RestService.swift in Sources */,
 				C9A1728C1D97AA0900FD8ACE /* ImageService.swift in Sources */,
 				C911394F1D985F8B00FDB120 /* HomeViewControllerExtension.swift in Sources */,

@@ -42,6 +42,8 @@ class MovieListResponseDto : Mappable{
         
     }
     
+    init() {}
+    
     func mapping(map: Map){
         page <- map["page"]
         movieItemList <- map["results"]

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchControllerDelegate{
     
@@ -15,11 +16,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var sortOrderTextField: UITextField!
     
     var sortPickerView: UIPickerView!
+    var tempSelectedSortOrder:SortOrder = SortOrder.popularity
     var MOVIE_POSTER_ITEM_SIZE:CGSize?
     var movieSearchController : UISearchController!
     var queryText:String?
     
     let movieViewModel:MovieViewModel = MovieViewModel()
+    
     let LOAD_MORE_FOOTER_VIEW_IDENTIFIER = "LoadMoreFooterView"
     let MOVIE_DETAILS_SEGUE_IDENTIFIER = "MoviePosterDetailSegue"
     let MOVIE_POSTER_CELL_IDENTIFIER = "MoviePosterCell"
@@ -34,10 +37,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black;
+        
         if self.queryText != nil && !self.queryText!.isEmpty{
             self.movieSearchController.searchBar.text = self.queryText
             self.movieSearchController.isActive = true
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.showErrorDialog(notification:)), name: MovieViewModel.onErrorLoadingMovies, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.showErrorDialog(notification:)), name: MovieViewModel.onEmptyMoviesListFound, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.showErrorDialog(notification:)), name: MovieViewModel.onNoMatchingMoviesFound, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,12 +55,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func initializeMovieList(){
-        self.movieViewModel.updateMovies(shouldFilter: false, queryText: nil) { (success:Bool) in
-            if success{
-                self.reloadMoviesCollectionView()
-            }else{
-                //show error
-            }
+        self.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE)
+        self.movieViewModel.updateMovies(shouldFilter: false, queryText: nil) {[weak self] (success:Bool) in
+            self?.hideHUD()
+            self?.reloadMoviesCollectionView()
         }
     }
     
@@ -59,7 +66,59 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.sortPickerView = UIPickerView()
         self.sortPickerView.delegate = self
         self.sortPickerView.dataSource = self
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(HomeViewController.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(HomeViewController.cancelPicker))
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
         self.sortOrderTextField.inputView = self.sortPickerView
+        self.sortOrderTextField.inputAccessoryView = toolBar
+    }
+    
+    func showHUD(message:String){
+        DispatchQueue.main.async {
+            let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
+            loader.mode = MBProgressHUDMode.indeterminate
+            loader.label.text = message
+        }
+    }
+    
+    func showErrorDialog(notification:NSNotification){
+        self.hideHUD()
+        
+        var message = "";
+        switch notification.name {
+        case MovieViewModel.onErrorLoadingMovies:
+            message = ERROR_LOADING_MOVIES_MESSAGE
+        case MovieViewModel.onEmptyMoviesListFound:
+            message = NO_MORE_MOVIES_FOUND_MESSAGE
+        case MovieViewModel.onNoMatchingMoviesFound:
+            message = NO_MATCHING_MOVIES_FOUND_MESSAGE
+        default:
+            message = ERROR_LOADING_MOVIES_MESSAGE
+        }
+        
+        DispatchQueue.main.async {
+            let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
+            loader.mode = MBProgressHUDMode.text
+            loader.label.text = message
+            loader.hide(animated: true, afterDelay: 3)
+        }
+    }
+    
+    func hideHUD(){
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,7 +134,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.movieSearchController.delegate = self
         self.movieSearchController.searchBar.delegate = self
         self.movieSearchController.hidesNavigationBarDuringPresentation = false
-        self.movieSearchController.dimsBackgroundDuringPresentation = true
+        self.movieSearchController.dimsBackgroundDuringPresentation = false
         self.movieSearchController.searchBar.placeholder = MOVIE_SEARCH_BAR_PLACEHOLDER
         
         self.navigationItem.titleView = self.movieSearchController.searchBar
@@ -144,14 +203,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func loadMoreMovies(){
-        self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText) { (success:Bool) in
-            
-            if success{
-                //reload collection view
-                self.reloadMoviesCollectionView()
-            }else{
-                //show error that more movie list could not be fetched
-            }
+        self.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE)
+        self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText) {[weak self] (success:Bool) in
+            self?.hideHUD()
+            self?.reloadMoviesCollectionView()
         }
     }
 }

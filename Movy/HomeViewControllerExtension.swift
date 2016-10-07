@@ -44,25 +44,29 @@ extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedSortOrder = row == 0 ? SortOrder.popularity : SortOrder.rating
+        self.tempSelectedSortOrder = row == 0 ? SortOrder.popularity : SortOrder.rating
+    }
+    
+    func donePicker(){
+        self.cancelPicker()
         let tempCurrentState = self.movieViewModel.currentMovieListState
-        if tempCurrentState.currentSortOrder != selectedSortOrder{
+        if tempCurrentState.currentSortOrder != self.tempSelectedSortOrder{
             
-            self.movieViewModel.currentMovieListState.currentSortOrder = selectedSortOrder
+            self.movieViewModel.currentMovieListState.currentSortOrder = self.tempSelectedSortOrder
             self.movieViewModel.currentMovieListState.currentPage = 1
             
-            self.sortOrderTextField.text = selectedSortOrder.rawValue
-            self.sortOrderTextField.resignFirstResponder()
+            self.sortOrderTextField.text = self.tempSelectedSortOrder.rawValue
             //fetch new movies according to new sort order
-            self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText, fetchSuccess: { (success:Bool) in
+            self.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE)
+            self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText, fetchSuccess: {[weak self] (success:Bool) in
                 
-                if success{
-                    self.reloadMoviesCollectionView()
-                }else{
-                    //revert back to previous state
-                    self.movieViewModel.currentMovieListState = tempCurrentState
-                }
+                self?.hideHUD()
+                self?.reloadMoviesCollectionView()
             })
         }
+    }
+    
+    func cancelPicker(){
+        self.sortOrderTextField.resignFirstResponder()
     }
 }

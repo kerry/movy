@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CA916CB05DBAA9E5868EB5F8A5B909F7"
-               BuildableName = "Pods_Movy.framework"
-               BlueprintName = "Pods-Movy"
+               BlueprintIdentifier = "FBD082A0D35F7917EAB9DD9D3CCA9976"
+               BuildableName = "AlamofireObjectMapper.framework"
+               BlueprintName = "AlamofireObjectMapper"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CA916CB05DBAA9E5868EB5F8A5B909F7"
-            BuildableName = "Pods_Movy.framework"
-            BlueprintName = "Pods-Movy"
+            BlueprintIdentifier = "FBD082A0D35F7917EAB9DD9D3CCA9976"
+            BuildableName = "AlamofireObjectMapper.framework"
+            BlueprintName = "AlamofireObjectMapper"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

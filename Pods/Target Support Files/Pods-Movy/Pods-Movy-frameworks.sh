@@ -86,10 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Movy/Alamofire.framework"
   install_framework "Pods-Movy/AlamofireObjectMapper.framework"
+  install_framework "Pods-Movy/MBProgressHUD.framework"
   install_framework "Pods-Movy/ObjectMapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Movy/Alamofire.framework"
   install_framework "Pods-Movy/AlamofireObjectMapper.framework"
+  install_framework "Pods-Movy/MBProgressHUD.framework"
   install_framework "Pods-Movy/ObjectMapper.framework"
 fi
