@@ -1,0 +1,411 @@
+{
+    "page": 1,
+    "results": [
+                {
+                "poster_path": "/z6BP8yLwck8mN9dtdYKkZ4XGa3D.jpg",
+                "adult": false,
+                "overview": "A big screen remake of John Sturges' classic western The Magnificent Seven, itself a remake of Akira Kurosawa's Seven Samurai. Seven gun men in the old west gradually come together to help a poor village against savage thieves.",
+                "release_date": "2016-09-14",
+                "genre_ids": [
+                              28,
+                              12,
+                              37
+                              ],
+                "id": 333484,
+                "original_title": "The Magnificent Seven",
+                "original_language": "en",
+                "title": "The Magnificent Seven",
+                "backdrop_path": "/T3LrH6bnV74llVbFpQsCBrGaU9.jpg",
+                "popularity": 32.363999,
+                "vote_count": 402,
+                "video": false,
+                "vote_average": 4.57
+                },
+                {
+                "poster_path": "/5N20rQURev5CNDcMjHVUZhpoCNC.jpg",
+                "adult": false,
+                "overview": "Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies.",
+                "release_date": "2016-04-27",
+                "genre_ids": [
+                              28,
+                              878,
+                              53
+                              ],
+                "id": 271110,
+                "original_title": "Captain America: Civil War",
+                "original_language": "en",
+                "title": "Captain America: Civil War",
+                "backdrop_path": "/m5O3SZvQ6EgD5XXXLPIP1wLppeW.jpg",
+                "popularity": 25.403182,
+                "vote_count": 3172,
+                "video": false,
+                "vote_average": 6.77
+                },
+                {
+                "poster_path": "/uSHjeRVuObwdpbECaXJnvyDoeJK.jpg",
+                "adult": false,
+                "overview": "A teenager finds himself transported to an island where he must help protect a group of orphans with special powers from creatures intent on destroying them.",
+                "release_date": "2016-09-28",
+                "genre_ids": [
+                              14
+                              ],
+                "id": 283366,
+                "original_title": "Miss Peregrine's Home for Peculiar Children",
+                "original_language": "en",
+                "title": "Miss Peregrine's Home for Peculiar Children",
+                "backdrop_path": "/qXQinDhDZkTiqEGLnav0h1YSUu8.jpg",
+                "popularity": 22.712697,
+                "vote_count": 98,
+                "video": false,
+                "vote_average": 6.38
+                },
+                {
+                "poster_path": "/7rfucKCjV01OEsGr9grXa34Aywd.jpg",
+                "adult": false,
+                "overview": "In the sequel to Tim Burton's \"Alice in Wonderland\", Alice Kingsleigh returns to Underland and faces a new adventure in saving the Mad Hatter.",
+                "release_date": "2016-05-25",
+                "genre_ids": [
+                              12,
+                              10751,
+                              14
+                              ],
+                "id": 241259,
+                "original_title": "Alice Through the Looking Glass",
+                "original_language": "en",
+                "title": "Alice Through the Looking Glass",
+                "backdrop_path": "/rWlXrfmX1FgcPyj7oQmLfwKRaam.jpg",
+                "popularity": 16.326645,
+                "vote_count": 424,
+                "video": false,
+                "vote_average": 6.43
+                },
+                {
+                "poster_path": "/1ZQVHkvOegv5wVzxD2fphcxl1Ba.jpg",
+                "adult": false,
+                "overview": "Set after the events of Continental Drift, Scrat's epic pursuit of his elusive acorn catapults him outside of Earth, where he accidentally sets off a series of cosmic events that transform and threaten the planet. To save themselves from peril, Manny, Sid, Diego, and the rest of the herd leave their home and embark on a quest full of thrills and spills, highs and lows, laughter and adventure while traveling to exotic new lands and encountering a host of colorful new characters.",
+                "release_date": "2016-06-23",
+                "genre_ids": [
+                              35,
+                              16,
+                              12,
+                              10751,
+                              878
+                              ],
+                "id": 278154,
+                "original_title": "Ice Age: Collision Course",
+                "original_language": "en",
+                "title": "Ice Age: Collision Course",
+                "backdrop_path": "/o29BFNqgXOUT1yHNYusnITsH7P9.jpg",
+                "popularity": 16.303009,
+                "vote_count": 316,
+                "video": false,
+                "vote_average": 5.3
+                },
+                {
+                "poster_path": "/7D6hM7IR0TbQmNvSZVtEiPM3H5h.jpg",
+                "adult": false,
+                "overview": "A story set on the offshore drilling rig Deepwater Horizon, which exploded during April 2010 and created the worst oil spill in U.S. history.",
+                "release_date": "2016-09-28",
+                "genre_ids": [
+                              18
+                              ],
+                "id": 296524,
+                "original_title": "Deepwater Horizon",
+                "original_language": "en",
+                "title": "Deepwater Horizon",
+                "backdrop_path": "/zjYdnBHbIOYBqKZxvBUsT5MevUA.jpg",
+                "popularity": 15.595258,
+                "vote_count": 116,
+                "video": false,
+                "vote_average": 4.17
+                },
+                {
+                "poster_path": "/kqjL17yufvn9OVLyXYpvtyrFfak.jpg",
+                "adult": false,
+                "overview": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.",
+                "release_date": "2015-05-13",
+                "genre_ids": [
+                              28,
+                              12,
+                              878,
+                              53
+                              ],
+                "id": 76341,
+                "original_title": "Mad Max: Fury Road",
+                "original_language": "en",
+                "title": "Mad Max: Fury Road",
+                "backdrop_path": "/tbhdm8UJAb4ViCTsulYFL3lxMCd.jpg",
+                "popularity": 15.401916,
+                "vote_count": 5452,
+                "video": false,
+                "vote_average": 7.23
+                },
+                {
+                "poster_path": "/inVq3FRqcYIRl2la8iZikYYxFNR.jpg",
+                "adult": false,
+                "overview": "Based upon Marvel Comics’ most unconventional anti-hero, DEADPOOL tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.",
+                "release_date": "2016-02-09",
+                "genre_ids": [
+                              28,
+                              12,
+                              35,
+                              10749
+                              ],
+                "id": 293660,
+                "original_title": "Deadpool",
+                "original_language": "en",
+                "title": "Deadpool",
+                "backdrop_path": "/nbIrDhOtUpdD9HKDBRy02a8VhpV.jpg",
+                "popularity": 14.593787,
+                "vote_count": 5129,
+                "video": false,
+                "vote_average": 7.17
+                },
+                {
+                "poster_path": "/ghL4ub6vwbYShlqCFHpoIRwx2sm.jpg",
+                "adult": false,
+                "overview": "The USS Enterprise crew explores the furthest reaches of uncharted space, where they encounter a mysterious new enemy who puts them and everything the Federation stands for to the test.",
+                "release_date": "2016-07-07",
+                "genre_ids": [
+                              28,
+                              12,
+                              878,
+                              53
+                              ],
+                "id": 188927,
+                "original_title": "Star Trek Beyond",
+                "original_language": "en",
+                "title": "Star Trek Beyond",
+                "backdrop_path": "/doqRJwhRFsHHneYG82bM0hSTqpz.jpg",
+                "popularity": 14.528424,
+                "vote_count": 782,
+                "video": false,
+                "vote_average": 6.36
+                },
+                {
+                "poster_path": "/zSouWWrySXshPCT4t3UKCQGayyo.jpg",
+                "adult": false,
+                "overview": "After the re-emergence of the world's first mutant, world-destroyer Apocalypse, the X-Men must unite to defeat his extinction level plan.",
+                "release_date": "2016-05-18",
+                "genre_ids": [
+                              28,
+                              12,
+                              14,
+                              878
+                              ],
+                "id": 246655,
+                "original_title": "X-Men: Apocalypse",
+                "original_language": "en",
+                "title": "X-Men: Apocalypse",
+                "backdrop_path": "/oQWWth5AOtbWG9o8SCAviGcADed.jpg",
+                "popularity": 14.329792,
+                "vote_count": 1963,
+                "video": false,
+                "vote_average": 6.08
+                },
+                {
+                "poster_path": "/4qnJ1hsMADxzwnOmnwjZTNp0rKT.jpg",
+                "adult": false,
+                "overview": "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian Holtzmann, and subway worker Patty Tolan band together to stop the otherworldly threat.",
+                "release_date": "2016-07-14",
+                "genre_ids": [
+                              28,
+                              35,
+                              14
+                              ],
+                "id": 43074,
+                "original_title": "Ghostbusters",
+                "original_language": "en",
+                "title": "Ghostbusters",
+                "backdrop_path": "/lbtG9MTb8i13KhXuyl3bmnqt7Lt.jpg",
+                "popularity": 13.483772,
+                "vote_count": 598,
+                "video": false,
+                "vote_average": 5.23
+                },
+                {
+                "poster_path": "/tgfRDJs5PFW20Aoh1orEzuxW8cN.jpg",
+                "adult": false,
+                "overview": "Arthur Bishop thought he had put his murderous past behind him when his most formidable foe kidnaps the love of his life. Now he is forced to travel the globe to complete three impossible assassinations, and do what he does best, make them look like accidents.",
+                "release_date": "2016-08-25",
+                "genre_ids": [
+                              28,
+                              80,
+                              53
+                              ],
+                "id": 278924,
+                "original_title": "Mechanic: Resurrection",
+                "original_language": "en",
+                "title": "Mechanic: Resurrection",
+                "backdrop_path": "/6kMu4vECAyTpj2Z7n8viJ4RAaYh.jpg",
+                "popularity": 13.465355,
+                "vote_count": 419,
+                "video": false,
+                "vote_average": 4.34
+                },
+                {
+                "poster_path": "/cGOPbv9wA5gEejkUN892JrveARt.jpg",
+                "adult": false,
+                "overview": "Fearing the actions of a god-like Super Hero left unchecked, Gotham City’s own formidable, forceful vigilante takes on Metropolis’s most revered, modern-day savior, while the world wrestles with what sort of hero it really needs. And with Batman and Superman at war with one another, a new threat quickly arises, putting mankind in greater danger than it’s ever known before.",
+                "release_date": "2016-03-23",
+                "genre_ids": [
+                              28,
+                              12,
+                              14
+                              ],
+                "id": 209112,
+                "original_title": "Batman v Superman: Dawn of Justice",
+                "original_language": "en",
+                "title": "Batman v Superman: Dawn of Justice",
+                "backdrop_path": "/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg",
+                "popularity": 11.729673,
+                "vote_count": 3745,
+                "video": false,
+                "vote_average": 5.51
+                },
+                {
+                "poster_path": "/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
+                "adult": false,
+                "overview": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+                "release_date": "2014-11-05",
+                "genre_ids": [
+                              12,
+                              18,
+                              878
+                              ],
+                "id": 157336,
+                "original_title": "Interstellar",
+                "original_language": "en",
+                "title": "Interstellar",
+                "backdrop_path": "/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
+                "popularity": 11.557154,
+                "vote_count": 5773,
+                "video": false,
+                "vote_average": 8.1
+                },
+                {
+                "poster_path": "/e1mjopzAS2KNsvpbpahQ1a6SkSn.jpg",
+                "adult": false,
+                "overview": "From DC Comics comes the Suicide Squad, an antihero team of incarcerated supervillains who act as deniable assets for the United States government, undertaking high-risk black ops missions in exchange for commuted prison sentences.",
+                "release_date": "2016-08-03",
+                "genre_ids": [
+                              28,
+                              80,
+                              14
+                              ],
+                "id": 297761,
+                "original_title": "Suicide Squad",
+                "original_language": "en",
+                "title": "Suicide Squad",
+                "backdrop_path": "/ndlQ2Cuc3cjTL7lTynw6I4boP4S.jpg",
+                "popularity": 11.463072,
+                "vote_count": 2037,
+                "video": false,
+                "vote_average": 5.92
+                },
+                {
+                "poster_path": "/ckrTPz6FZ35L5ybjqvkLWzzSLO7.jpg",
+                "adult": false,
+                "overview": "The peaceful realm of Azeroth stands on the brink of war as its civilization faces a fearsome race of invaders: orc warriors fleeing their dying home to colonize another. As a portal opens to connect the two worlds, one army faces destruction and the other faces extinction. From opposing sides, two heroes are set on a collision course that will decide the fate of their family, their people, and their home.",
+                "release_date": "2016-05-25",
+                "genre_ids": [
+                              28,
+                              12,
+                              14
+                              ],
+                "id": 68735,
+                "original_title": "Warcraft",
+                "original_language": "en",
+                "title": "Warcraft",
+                "backdrop_path": "/5SX2rgKXZ7NVmAJR5z5LprqSXKa.jpg",
+                "popularity": 11.454551,
+                "vote_count": 906,
+                "video": false,
+                "vote_average": 6.04
+                },
+                {
+                "poster_path": "/jjBgi2r5cRt36xF6iNUEhzscEcb.jpg",
+                "adult": false,
+                "overview": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
+                "release_date": "2015-06-09",
+                "genre_ids": [
+                              28,
+                              12,
+                              878,
+                              53
+                              ],
+                "id": 135397,
+                "original_title": "Jurassic World",
+                "original_language": "en",
+                "title": "Jurassic World",
+                "backdrop_path": "/dkMD5qlogeRMiEixC4YNPUvax2T.jpg",
+                "popularity": 10.976196,
+                "vote_count": 5085,
+                "video": false,
+                "vote_average": 6.59
+                },
+                {
+                "poster_path": "/5JU9ytZJyR3zmClGmVm9q4Geqbd.jpg",
+                "adult": false,
+                "overview": "The year is 2029. John Connor, leader of the resistance continues the war against the machines. At the Los Angeles offensive, John's fears of the unknown future begin to emerge when TECOM spies reveal a new plot by SkyNet that will attack him from both fronts; past and future, and will ultimately change warfare forever.",
+                "release_date": "2015-06-23",
+                "genre_ids": [
+                              878,
+                              28,
+                              53,
+                              12
+                              ],
+                "id": 87101,
+                "original_title": "Terminator Genisys",
+                "original_language": "en",
+                "title": "Terminator Genisys",
+                "backdrop_path": "/bIlYH4l2AyYvEysmS2AOfjO7Dn8.jpg",
+                "popularity": 10.532432,
+                "vote_count": 2374,
+                "video": false,
+                "vote_average": 5.91
+                },
+                {
+                "poster_path": "/6FxOPJ9Ysilpq0IgkrMJ7PubFhq.jpg",
+                "adult": false,
+                "overview": "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to investigate the activities at a mining encampment.",
+                "release_date": "2016-06-29",
+                "genre_ids": [
+                              28,
+                              12
+                              ],
+                "id": 258489,
+                "original_title": "The Legend of Tarzan",
+                "original_language": "en",
+                "title": "The Legend of Tarzan",
+                "backdrop_path": "/uC8RkYALi9VWHeZQWLRUqjxfW09.jpg",
+                "popularity": 10.271159,
+                "vote_count": 1185,
+                "video": false,
+                "vote_average": 4.95
+                },
+                {
+                "poster_path": "/weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+                "adult": false,
+                "overview": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
+                "release_date": "2015-12-15",
+                "genre_ids": [
+                              28,
+                              12,
+                              878,
+                              14
+                              ],
+                "id": 140607,
+                "original_title": "Star Wars: The Force Awakens",
+                "original_language": "en",
+                "title": "Star Wars: The Force Awakens",
+                "backdrop_path": "/c2Ax8Rox5g6CneChwy1gmu4UbSb.jpg",
+                "popularity": 10.017173,
+                "vote_count": 4833,
+                "video": false,
+                "vote_average": 7.56
+                }
+                ],
+    "total_results": 19588,
+    "total_pages": 980
+}
