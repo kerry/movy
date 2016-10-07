@@ -1,0 +1,6 @@
+framework module Pods_MovyTests {
+  umbrella header "Pods-MovyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

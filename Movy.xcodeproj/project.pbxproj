@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		24811BF9DFBF387184B1665A /* Pods_Movy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */; };
+		91CC8F9567AFB574E71E405F /* Pods_MovyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA3405E1AA8ECE64864E98E8 /* Pods_MovyTests.framework */; };
 		C90F46091DA5BEBB008E5609 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */; };
 		C90F460D1DA5CB83008E5609 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F460C1DA5CB83008E5609 /* Constants.swift */; };
 		C911394D1D98473300FDB120 /* LoadMoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */; };
 		C911394F1D985F8B00FDB120 /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */; };
 		C943DC761D99C62C00C6A69C /* SortOrderEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */; };
 		C943DC781D99E8D800C6A69C /* MovyUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943DC771D99E8D800C6A69C /* MovyUIImage.swift */; };
+		C96721101DA83285008FE2F3 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = C967210F1DA83285008FE2F3 /* response.json */; };
+		C96721141DA84AE0008FE2F3 /* responseOkCase.json in Resources */ = {isa = PBXBuildFile; fileRef = C96721131DA84AE0008FE2F3 /* responseOkCase.json */; };
+		C96721161DA84B8C008FE2F3 /* responseBadCase.json in Resources */ = {isa = PBXBuildFile; fileRef = C96721151DA84B8C008FE2F3 /* responseBadCase.json */; };
+		C967211C1DA85EA4008FE2F3 /* poster.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C967211B1DA85EA4008FE2F3 /* poster.jpg */; };
 		C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D34E1D970D730007BA61 /* AppDelegate.swift */; };
 		C975D3511D970D730007BA61 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975D3501D970D730007BA61 /* HomeViewController.swift */; };
 		C975D3541D970D730007BA61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C975D3521D970D730007BA61 /* Main.storyboard */; };
@@ -49,13 +54,20 @@
 
 /* Begin PBXFileReference section */
 		1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		371A1301F5934FE43E1EB89D /* Pods-MovyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovyTests/Pods-MovyTests.release.xcconfig"; sourceTree = "<group>"; };
 		412AB24A8ED07DE292F84465 /* Pods-Movy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movy/Pods-Movy.release.xcconfig"; sourceTree = "<group>"; };
+		6814C97DD6098391072411A5 /* Pods-MovyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovyTests/Pods-MovyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA3405E1AA8ECE64864E98E8 /* Pods_MovyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		C90F460C1DA5CB83008E5609 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooterView.swift; sourceTree = "<group>"; };
 		C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
 		C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortOrderEnum.swift; sourceTree = "<group>"; };
 		C943DC771D99E8D800C6A69C /* MovyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovyUIImage.swift; sourceTree = "<group>"; };
+		C967210F1DA83285008FE2F3 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
+		C96721131DA84AE0008FE2F3 /* responseOkCase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseOkCase.json; sourceTree = "<group>"; };
+		C96721151DA84B8C008FE2F3 /* responseBadCase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseBadCase.json; sourceTree = "<group>"; };
+		C967211B1DA85EA4008FE2F3 /* poster.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster.jpg; sourceTree = "<group>"; };
 		C975D34B1D970D730007BA61 /* Movy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975D34E1D970D730007BA61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C975D3501D970D730007BA61 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91CC8F9567AFB574E71E405F /* Pods_MovyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +123,8 @@
 			children = (
 				C9E5316C494831A460BEE56D /* Pods-Movy.debug.xcconfig */,
 				412AB24A8ED07DE292F84465 /* Pods-Movy.release.xcconfig */,
+				6814C97DD6098391072411A5 /* Pods-MovyTests.debug.xcconfig */,
+				371A1301F5934FE43E1EB89D /* Pods-MovyTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -118,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				1A09373B9D0BBC1DE145279D /* Pods_Movy.framework */,
+				BA3405E1AA8ECE64864E98E8 /* Pods_MovyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,7 +141,6 @@
 		C90F46071DA5BE0C008E5609 /* view-model */ = {
 			isa = PBXGroup;
 			children = (
-				C9A1728A1D97A9F200FD8ACE /* services */,
 				C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */,
 			);
 			name = "view-model";
@@ -188,8 +203,12 @@
 		C975D3621D970D740007BA61 /* MovyTests */ = {
 			isa = PBXGroup;
 			children = (
+				C967211B1DA85EA4008FE2F3 /* poster.jpg */,
 				C975D3631D970D740007BA61 /* MovyTests.swift */,
 				C975D3651D970D740007BA61 /* Info.plist */,
+				C967210F1DA83285008FE2F3 /* response.json */,
+				C96721131DA84AE0008FE2F3 /* responseOkCase.json */,
+				C96721151DA84B8C008FE2F3 /* responseBadCase.json */,
 			);
 			path = MovyTests;
 			sourceTree = "<group>";
@@ -206,6 +225,7 @@
 		C975D3841D971BB70007BA61 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				C9A1728A1D97A9F200FD8ACE /* services */,
 				C975D3821D971BB30007BA61 /* MovieListResponseDto.swift */,
 				C975D3851D971C4A0007BA61 /* MovieItem.swift */,
 			);
@@ -279,9 +299,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C975D3761D970D740007BA61 /* Build configuration list for PBXNativeTarget "MovyTests" */;
 			buildPhases = (
+				46A8119E049022C9AD82A3AC /* Check Pods Manifest.lock */,
 				C975D35B1D970D740007BA61 /* Sources */,
 				C975D35C1D970D740007BA61 /* Frameworks */,
 				C975D35D1D970D740007BA61 /* Resources */,
+				81F2D9084BECF1D4B6C18519 /* Embed Pods Frameworks */,
+				F71DC2CF0B17CE5525AA63EA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -378,6 +401,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96721161DA84B8C008FE2F3 /* responseBadCase.json in Resources */,
+				C96721141DA84AE0008FE2F3 /* responseOkCase.json in Resources */,
+				C967211C1DA85EA4008FE2F3 /* poster.jpg in Resources */,
+				C96721101DA83285008FE2F3 /* response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +418,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		46A8119E049022C9AD82A3AC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		4A8E0C0613F89C941715CA02 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,6 +446,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movy/Pods-Movy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81F2D9084BECF1D4B6C18519 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MovyTests/Pods-MovyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		95755DECA2CDD0548C408401 /* Copy Pods Resources */ = {
@@ -434,6 +491,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F71DC2CF0B17CE5525AA63EA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MovyTests/Pods-MovyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -641,6 +713,7 @@
 		};
 		C975D3771D970D740007BA61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6814C97DD6098391072411A5 /* Pods-MovyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -656,6 +729,7 @@
 		};
 		C975D3781D970D740007BA61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 371A1301F5934FE43E1EB89D /* Pods-MovyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

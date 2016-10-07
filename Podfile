@@ -13,6 +13,10 @@ end
 
 target 'MovyTests' do
 
+pod 'Alamofire', '~> 4.0'
+pod 'OHHTTPStubs'
+pod 'OHHTTPStubs/Swift'
+
 end
 
 target 'MovyUITests' do
