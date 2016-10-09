@@ -10,28 +10,31 @@ import Foundation
 
 class MovieViewModel{
     
+    static let onError = Notification.Name("on-error")
+
     let restService = RestService.sharedInstance
+    let reachabilityInstance = ReachabilityWrapper.sharedInstance
     
     var movieListToDisplay:[MovieItem] = []
-    fileprivate var movieListFiltered:[MovieItem] = []
-    fileprivate var fullMovieList:[MovieItem] = []
-    
-    static let onErrorLoadingMovies = Notification.Name("on-error-loading-movies")
-    static let onEmptyMoviesListFound = Notification.Name("on-empty-movies-found")
-    static let onNoMatchingMoviesFound = Notification.Name("on-no-matching-movies-found")
+    var fullMovieList:[MovieItem] = []
+    var currentMovieListState:MovieListState = MovieListState(currentSortOrder: SortOrder.popularity, currentPage: 1)
     
     internal struct MovieListState {
         var currentSortOrder:SortOrder
         var currentPage:Int
     }
     
-    var currentMovieListState:MovieListState = MovieListState(currentSortOrder: SortOrder.popularity, currentPage: 1)
-    
     init(){
         ApplicationSettings.resetScreenSizeConstants()
     }
     
     func updateMovies(shouldFilter:Bool, queryText:String?, fetchSuccess:@escaping (Bool) -> Void){
+        
+        if !reachabilityInstance.isReachable(){
+            NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:NETWORK_UNAVAILABLE.localized])
+            return
+        }
+        
         self.fetchMovies(movieListState: self.currentMovieListState) {[weak self] (movieItemList:[MovieItem]?, error:Error?) in
             if let strongSelf = self{
                 if error == nil && movieItemList != nil{
@@ -43,11 +46,9 @@ class MovieViewModel{
                     
                     if movieItemList!.count == 0{
                         //empty list retrieved
-                        NotificationCenter.default.post(name: MovieViewModel.onEmptyMoviesListFound, object: nil)
+                        NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:NO_MORE_MOVIES_FOUND_MESSAGE.localized])
                         return
                     }
-                    
-                    strongSelf.currentMovieListState.currentPage += 1
                     
                     strongSelf.fullMovieList.append(contentsOf: movieItemList!)
                     
@@ -59,14 +60,16 @@ class MovieViewModel{
                     
                     if strongSelf.movieListToDisplay.count == 0{
                         //empty list retrieved
-                        NotificationCenter.default.post(name: MovieViewModel.onNoMatchingMoviesFound, object: nil)
+                        NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:NO_MATCHING_MOVIES_FOUND_MESSAGE.localized])
                         return
                     }
+                    
+                    strongSelf.currentMovieListState.currentPage += 1
                     
                     fetchSuccess(true)
                 }else{
                     //show error in view that movie items could not be fetched
-                    fetchSuccess(false)
+                    NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:ERROR_LOADING_MOVIES_MESSAGE.localized])
                 }
             }
         }
@@ -84,7 +87,14 @@ class MovieViewModel{
         let cachedImage = ImageService.sharedInstance.checkCache(path: posterImagePath)
         if cachedImage != nil{
             completionHandler(cachedImage!)
+            return
         }
+        
+        if !reachabilityInstance.isReachable(){
+            NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:NETWORK_UNAVAILABLE.localized])
+            return
+        }
+        
         ImageService.sharedInstance.downloadImage(path: posterImagePath) { (downloadedImage:MovyUIImage?) in
             
             if downloadedImage != nil {

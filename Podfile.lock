@@ -20,6 +20,7 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (5.2.1)
   - OHHTTPStubs/Swift (5.2.1):
     - OHHTTPStubs/Core
+  - ReachabilitySwift (3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - OHHTTPStubs
   - OHHTTPStubs/Swift
+  - ReachabilitySwift (~> 3)
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
@@ -34,5 +36,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
   OHHTTPStubs: 3a42f25c00563b71355ac73112ba2324e9e6cef4
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
 
 COCOAPODS: 0.39.0

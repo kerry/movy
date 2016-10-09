@@ -6,7 +6,6 @@
 //  Copyright © 2016 prateekgrover. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate{
@@ -37,11 +36,12 @@ extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate{
             self.movieViewModel.currentMovieListState.currentPage = 1
             
             //fetch new movies according to new sort order
-            self.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE)
+            self.showDialogService.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE.localized)
             self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText, fetchSuccess: {[weak self] (success:Bool) in
-                
-                self?.hideHUD()
-                self?.reloadMoviesCollectionView()
+                if success{
+                    self?.showDialogService.hideHUD()
+                    self?.reloadMoviesCollectionView()
+                }
             })
         }
     }

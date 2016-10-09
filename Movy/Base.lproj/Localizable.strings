@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Movy
+
+  Created by Prateek Grover on 09/10/16.
+  Copyright © 2016 prateekgrover. All rights reserved.
+*/
+
+"Search movies" = "Search movies";
+"Load more" = "Load more";
+"Fetching movies. Please wait..." = "Fetching movies. Please wait...";
+"No movies found" = "No movies found";
+"No matching movies found" = "No matching movies found";
+"Error loading movies" = "Error loading movies";
+"Details" = "Details";
+"Network unavailable" = "Network unavailable";

@@ -7,8 +7,6 @@
 //
 
 import XCTest
-import Alamofire
-import AlamofireObjectMapper
 import OHHTTPStubs
 @testable import Movy
 

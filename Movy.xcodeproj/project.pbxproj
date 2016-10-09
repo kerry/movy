@@ -33,6 +33,11 @@
 		C9A1728C1D97AA0900FD8ACE /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1728B1D97AA0900FD8ACE /* ImageService.swift */; };
 		C9A172911D97AAFF00FD8ACE /* ApplicationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A172901D97AAFF00FD8ACE /* ApplicationSettings.swift */; };
 		C9A172951D97CFFA00FD8ACE /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A172941D97CFFA00FD8ACE /* MovieDetailViewController.swift */; };
+		C9F1528B1DA9BD2E00CB9D88 /* ShowDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F1528A1DA9BD2E00CB9D88 /* ShowDialogService.swift */; };
+		C9F152931DA9C8FD00CB9D88 /* FetchLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F152921DA9C8FD00CB9D88 /* FetchLocalizedString.swift */; };
+		C9F152941DA9CDEF00CB9D88 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9F152961DA9CDEF00CB9D88 /* Localizable.strings */; };
+		C9F152981DA9D18400CB9D88 /* ReachabilityWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F152971DA9D18400CB9D88 /* ReachabilityWrapper.swift */; };
+		C9F1529B1DAA973E00CB9D88 /* MovieViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F1529A1DAA973E00CB9D88 /* MovieViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +94,11 @@
 		C9A172901D97AAFF00FD8ACE /* ApplicationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSettings.swift; sourceTree = "<group>"; };
 		C9A172941D97CFFA00FD8ACE /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		C9E5316C494831A460BEE56D /* Pods-Movy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movy/Pods-Movy.debug.xcconfig"; sourceTree = "<group>"; };
+		C9F1528A1DA9BD2E00CB9D88 /* ShowDialogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDialogService.swift; sourceTree = "<group>"; };
+		C9F152921DA9C8FD00CB9D88 /* FetchLocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchLocalizedString.swift; sourceTree = "<group>"; };
+		C9F152951DA9CDEF00CB9D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C9F152971DA9D18400CB9D88 /* ReachabilityWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityWrapper.swift; sourceTree = "<group>"; };
+		C9F1529A1DAA973E00CB9D88 /* MovieViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +151,7 @@
 		C90F46071DA5BE0C008E5609 /* view-model */ = {
 			isa = PBXGroup;
 			children = (
+				C9F1528C1DA9C33100CB9D88 /* utils */,
 				C90F46081DA5BEBB008E5609 /* MovieViewModel.swift */,
 			);
 			name = "view-model";
@@ -149,19 +160,18 @@
 		C943DC791D99FC6F00C6A69C /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */,
 				C943DC771D99E8D800C6A69C /* MovyUIImage.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
 		};
-		C943DC7A1D9A087E00C6A69C /* MovieViewController */ = {
+		C943DC7A1D9A087E00C6A69C /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				C975D3501D970D730007BA61 /* HomeViewController.swift */,
 				C911394E1D985F8B00FDB120 /* HomeViewControllerExtension.swift */,
 			);
-			name = MovieViewController;
+			name = Home;
 			sourceTree = "<group>";
 		};
 		C975D3421D970D730007BA61 = {
@@ -209,6 +219,7 @@
 				C967210F1DA83285008FE2F3 /* response.json */,
 				C96721131DA84AE0008FE2F3 /* responseOkCase.json */,
 				C96721151DA84B8C008FE2F3 /* responseBadCase.json */,
+				C9F1529A1DAA973E00CB9D88 /* MovieViewModelTests.swift */,
 			);
 			path = MovyTests;
 			sourceTree = "<group>";
@@ -244,11 +255,10 @@
 		C9A1728D1D97AA1D00FD8ACE /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C975D3571D970D730007BA61 /* LaunchScreen.storyboard */,
-				C975D3521D970D730007BA61 /* Main.storyboard */,
+				C9F152991DA9D72700CB9D88 /* storyboards */,
+				C9F152891DA9BD1F00CB9D88 /* utils */,
 				C9A1728E1D97AA2400FD8ACE /* controllers */,
-				C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */,
-				C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */,
+				C9F152911DA9C82800CB9D88 /* custom_views */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -256,8 +266,8 @@
 		C9A1728E1D97AA2400FD8ACE /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C943DC7A1D9A087E00C6A69C /* MovieViewController */,
-				C9A172941D97CFFA00FD8ACE /* MovieDetailViewController.swift */,
+				C943DC7A1D9A087E00C6A69C /* Home */,
+				C9F152901DA9C81200CB9D88 /* MovieDetail */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -268,8 +278,53 @@
 				C975D3551D970D730007BA61 /* Assets.xcassets */,
 				C975D35A1D970D730007BA61 /* Info.plist */,
 				C90F460C1DA5CB83008E5609 /* Constants.swift */,
+				C9F152961DA9CDEF00CB9D88 /* Localizable.strings */,
 			);
 			name = resources;
+			sourceTree = "<group>";
+		};
+		C9F152891DA9BD1F00CB9D88 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C9F1528A1DA9BD2E00CB9D88 /* ShowDialogService.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		C9F1528C1DA9C33100CB9D88 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C9F152921DA9C8FD00CB9D88 /* FetchLocalizedString.swift */,
+				C943DC751D99C62C00C6A69C /* SortOrderEnum.swift */,
+				C9F152971DA9D18400CB9D88 /* ReachabilityWrapper.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		C9F152901DA9C81200CB9D88 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C9A172941D97CFFA00FD8ACE /* MovieDetailViewController.swift */,
+			);
+			name = MovieDetail;
+			sourceTree = "<group>";
+		};
+		C9F152911DA9C82800CB9D88 /* custom_views */ = {
+			isa = PBXGroup;
+			children = (
+				C975D37C1D9715750007BA61 /* MovyCollectionViewCell.swift */,
+				C911394C1D98473300FDB120 /* LoadMoreFooterView.swift */,
+			);
+			name = custom_views;
+			sourceTree = "<group>";
+		};
+		C9F152991DA9D72700CB9D88 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C975D3571D970D730007BA61 /* LaunchScreen.storyboard */,
+				C975D3521D970D730007BA61 /* Main.storyboard */,
+			);
+			name = storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C975D3591D970D730007BA61 /* LaunchScreen.storyboard in Resources */,
+				C9F152941DA9CDEF00CB9D88 /* Localizable.strings in Resources */,
 				C975D3561D970D730007BA61 /* Assets.xcassets in Resources */,
 				C975D3541D970D730007BA61 /* Main.storyboard in Resources */,
 			);
@@ -517,8 +573,10 @@
 			files = (
 				C975D3831D971BB30007BA61 /* MovieListResponseDto.swift in Sources */,
 				C911394D1D98473300FDB120 /* LoadMoreFooterView.swift in Sources */,
+				C9F152981DA9D18400CB9D88 /* ReachabilityWrapper.swift in Sources */,
 				C9A172911D97AAFF00FD8ACE /* ApplicationSettings.swift in Sources */,
 				C975D37D1D9715750007BA61 /* MovyCollectionViewCell.swift in Sources */,
+				C9F1528B1DA9BD2E00CB9D88 /* ShowDialogService.swift in Sources */,
 				C975D3511D970D730007BA61 /* HomeViewController.swift in Sources */,
 				C90F460D1DA5CB83008E5609 /* Constants.swift in Sources */,
 				C90F46091DA5BEBB008E5609 /* MovieViewModel.swift in Sources */,
@@ -526,6 +584,7 @@
 				C9A172951D97CFFA00FD8ACE /* MovieDetailViewController.swift in Sources */,
 				C943DC761D99C62C00C6A69C /* SortOrderEnum.swift in Sources */,
 				C975D34F1D970D730007BA61 /* AppDelegate.swift in Sources */,
+				C9F152931DA9C8FD00CB9D88 /* FetchLocalizedString.swift in Sources */,
 				C943DC781D99E8D800C6A69C /* MovyUIImage.swift in Sources */,
 				C975D3811D971B1A0007BA61 /* RestService.swift in Sources */,
 				C9A1728C1D97AA0900FD8ACE /* ImageService.swift in Sources */,
@@ -538,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C975D3641D970D740007BA61 /* MovyTests.swift in Sources */,
+				C9F1529B1DAA973E00CB9D88 /* MovieViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +639,14 @@
 				C975D3581D970D730007BA61 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C9F152961DA9CDEF00CB9D88 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9F152951DA9CDEF00CB9D88 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

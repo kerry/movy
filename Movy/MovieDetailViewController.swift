@@ -12,6 +12,7 @@ class MovieDetailViewController: UIViewController {
     
     var movieItem:MovieItem!
     var movieViewModel:MovieViewModel!
+    var showDialogService:ShowDialogService!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userRatingLabel: UILabel!
@@ -22,6 +23,7 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showDialogService = ShowDialogService(context: self.view)
 
         self.titleLabel.text = self.movieItem?.originalTitle
         self.userRatingLabel.text = "\((self.movieItem?.voteAverage)!)"
@@ -38,8 +40,16 @@ class MovieDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationItem.title = "Details"
+        self.showDialogService.addNotificationObservers()
+        
+        self.navigationItem.title = DETAILS_SCREEN_TITLE.localized
         self.navigationController?.navigationBar.tintColor = UIColor.white;
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.showDialogService.removeNotificationObservers()
     }
     
     fileprivate func setPosterImage(){

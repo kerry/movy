@@ -15,7 +15,6 @@ class RestService{
     static let sharedInstance = RestService()
     
     let MOVIE_DB_API_KEY = Bundle.main.object(forInfoDictionaryKey: "MovieDBAPIKey")!
-    let MOVIE_DB_BASE_URL:String = "https://api.themoviedb.org/3/movie/"
     
     func getMovieListByPopularity(sortOrder: SortOrder, page:Int,completionHandler:@escaping (MovieListResponseDto?, Error?) -> Void){
         
@@ -24,12 +23,19 @@ class RestService{
         let URL = MOVIE_DB_BASE_URL + "\(sortOrderString)?api_key=\(MOVIE_DB_API_KEY)&page=\(page)"
         
         Alamofire.request(URL).responseObject { (response: DataResponse<MovieListResponseDto>) in
-            let movieListResponse = response.result.value
-            if movieListResponse?.page != nil{
-                //result is nil or some error occured
-                completionHandler(movieListResponse, nil)
-            }else{
-                completionHandler(nil, nil)
+            
+            switch response.result {
+            case .success(let movieListResponse):
+                if movieListResponse.page != nil{
+                    //result is nil or some error occured
+                    completionHandler(movieListResponse, nil)
+                }else{
+                    completionHandler(nil, nil)
+                }
+                break
+            case .failure(let error):
+                completionHandler(nil, error)
+                break
             }
         }
     }

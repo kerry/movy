@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchControllerDelegate{
     
@@ -20,13 +19,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var queryText:String?
     
     let movieViewModel:MovieViewModel = MovieViewModel()
-    
-    let LOAD_MORE_FOOTER_VIEW_IDENTIFIER = "LoadMoreFooterView"
-    let MOVIE_DETAILS_SEGUE_IDENTIFIER = "MoviePosterDetailSegue"
-    let MOVIE_POSTER_CELL_IDENTIFIER = "MoviePosterCell"
+    var showDialogService:ShowDialogService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showDialogService = ShowDialogService(context: self.view)
         self.initializeMovieList()
         self.setupSort()
         self.initializeSearchController()
@@ -35,6 +32,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.showDialogService.addNotificationObservers()
+        
         self.navigationController?.navigationBar.barStyle = UIBarStyle.black;
         
         if self.queryText != nil && !self.queryText!.isEmpty{
@@ -42,9 +41,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.movieSearchController.isActive = true
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.showErrorDialog(notification:)), name: MovieViewModel.onErrorLoadingMovies, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.showErrorDialog(notification:)), name: MovieViewModel.onEmptyMoviesListFound, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.showErrorDialog(notification:)), name: MovieViewModel.onNoMatchingMoviesFound, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.showDialogService.removeNotificationObservers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,52 +55,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func initializeMovieList(){
-        self.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE)
+        self.showDialogService.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE.localized)
         self.movieViewModel.updateMovies(shouldFilter: false, queryText: nil) {[weak self] (success:Bool) in
-            self?.hideHUD()
+            self?.showDialogService.hideHUD()
             self?.reloadMoviesCollectionView()
         }
     }
     
     func setupSort(){
         self.sortSegmentControl.addTarget(self, action: #selector(HomeViewController.sortChanged), for: .valueChanged)
-    }
-    
-    func showHUD(message:String){
-        DispatchQueue.main.async {
-            let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
-            loader.mode = MBProgressHUDMode.indeterminate
-            loader.label.text = message
-        }
-    }
-    
-    func showErrorDialog(notification:NSNotification){
-        self.hideHUD()
-        
-        var message = "";
-        switch notification.name {
-        case MovieViewModel.onErrorLoadingMovies:
-            message = ERROR_LOADING_MOVIES_MESSAGE
-        case MovieViewModel.onEmptyMoviesListFound:
-            message = NO_MORE_MOVIES_FOUND_MESSAGE
-        case MovieViewModel.onNoMatchingMoviesFound:
-            message = NO_MATCHING_MOVIES_FOUND_MESSAGE
-        default:
-            message = ERROR_LOADING_MOVIES_MESSAGE
-        }
-        
-        DispatchQueue.main.async {
-            let loader = MBProgressHUD.showAdded(to: self.view, animated: true)
-            loader.mode = MBProgressHUDMode.text
-            loader.label.text = message
-            loader.hide(animated: true, afterDelay: 3)
-        }
-    }
-    
-    func hideHUD(){
-        DispatchQueue.main.async {
-            MBProgressHUD.hide(for: self.view, animated: true)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -115,7 +80,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.movieSearchController.searchBar.delegate = self
         self.movieSearchController.hidesNavigationBarDuringPresentation = false
         self.movieSearchController.dimsBackgroundDuringPresentation = false
-        self.movieSearchController.searchBar.placeholder = MOVIE_SEARCH_BAR_PLACEHOLDER
+        self.movieSearchController.searchBar.placeholder = MOVIE_SEARCH_BAR_PLACEHOLDER.localized
         
         self.navigationItem.titleView = self.movieSearchController.searchBar
         
@@ -138,7 +103,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let moviePosterCell:MovyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.MOVIE_POSTER_CELL_IDENTIFIER, for: indexPath) as! MovyCollectionViewCell
+        let moviePosterCell:MovyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: MOVIE_POSTER_CELL_IDENTIFIER, for: indexPath) as! MovyCollectionViewCell
         
         let movieItem = self.movieViewModel.movieListToDisplay[indexPath.item]
         moviePosterCell.configureCell(movieTitle: movieItem.originalTitle!, moviePosterImagePath: movieItem.posterPath!, movieViewModel: self.movieViewModel)
@@ -170,8 +135,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         var footerView:LoadMoreFooterView!
         
         if kind == UICollectionElementKindSectionFooter {
-            footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: self.LOAD_MORE_FOOTER_VIEW_IDENTIFIER, for: indexPath) as! LoadMoreFooterView
-            footerView.loadMoreButton.setTitle(LOAD_MORE_BUTTON_TITLE, for: .normal)
+            footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: LOAD_MORE_FOOTER_VIEW_IDENTIFIER, for: indexPath) as! LoadMoreFooterView
+            footerView.loadMoreButton.setTitle(LOAD_MORE_BUTTON_TITLE.localized, for: .normal)
             footerView.loadMoreButton.addTarget(self, action: #selector(HomeViewController.loadMoreMovies), for: .touchUpInside)
         }
         
@@ -179,13 +144,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: self.MOVIE_DETAILS_SEGUE_IDENTIFIER, sender: indexPath)
+        self.performSegue(withIdentifier: MOVIE_DETAILS_SEGUE_IDENTIFIER, sender: indexPath)
     }
     
     func loadMoreMovies(){
-        self.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE)
+        self.showDialogService.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE.localized)
         self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText) {[weak self] (success:Bool) in
-            self?.hideHUD()
+            self?.showDialogService.hideHUD()
             self?.reloadMoviesCollectionView()
         }
     }
