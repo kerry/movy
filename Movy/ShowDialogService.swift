@@ -13,23 +13,22 @@ import ReachabilitySwift
 
 class ShowDialogService : NSObject{
     
+    static let sharedInstance = ShowDialogService()
+    
     fileprivate var currentContext:UIView!
     
-    init(context:UIView){
+    override init(){
         super.init()
-        self.currentContext = context
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showErrorDialog(notification:)), name: MovieViewModel.onError, object: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func addNotificationObservers(){
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showErrorDialog(notification:)), name: MovieViewModel.onError, object: nil)
-    }
-    
-    func removeNotificationObservers(){
-        NotificationCenter.default.removeObserver(self)
+    func setCurrentContext(context:UIView){
+        self.currentContext = context
     }
     
     func showHUD(message:String){

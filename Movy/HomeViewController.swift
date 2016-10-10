@@ -19,11 +19,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var queryText:String?
     
     let movieViewModel:MovieViewModel = MovieViewModel()
-    var showDialogService:ShowDialogService!
+    var showDialogService:ShowDialogService = ShowDialogService.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.showDialogService = ShowDialogService(context: self.view)
+        self.showDialogService.setCurrentContext(context: self.view)
         self.initializeMovieList()
         self.setupSort()
         self.initializeSearchController()
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.showDialogService.addNotificationObservers()
+        self.showDialogService.setCurrentContext(context: self.view)
         
         self.navigationController?.navigationBar.barStyle = UIBarStyle.black;
         
@@ -41,12 +41,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.movieSearchController.isActive = true
         }
         
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        self.showDialogService.removeNotificationObservers()
     }
 
     override func didReceiveMemoryWarning() {
