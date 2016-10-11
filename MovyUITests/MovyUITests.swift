@@ -41,7 +41,7 @@ class MovyUITests: XCTestCase {
     }
     
     func testResetAnotherSortView(){
-        let collectionView = app.collectionViews.element(boundBy: 0)
+        var collectionView = app.collectionViews.element(boundBy: 0)
 
         let filePath = Bundle(for: type(of: self)).path(forResource: "responseSingle", ofType: "json")
         var returnData:Data!
@@ -61,7 +61,14 @@ class MovyUITests: XCTestCase {
         
         app.buttons["Top Rated"].tap()
         
-        XCTAssert(collectionView.cells.count == 0, "cells found even though should not")
+        collectionView = app.collectionViews.element(boundBy: 0)
+        
+        
+        if #available(iOS 10, *){
+            XCTAssert(collectionView.cells.count == 0, "cells found even though should not")
+        }else{
+            XCTAssert(!collectionView.cells.element(boundBy: 0).isHittable, "cells found even though should not")
+        }
         
         app.stubRequestsRemoveAll()
     }
