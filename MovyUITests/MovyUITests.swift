@@ -93,12 +93,20 @@ class MovyUITests: XCTestCase {
         searchMoviesSearchField.tap()
         searchMoviesSearchField.typeText("captain")
         
-        XCTAssert(collectionView.cells.count == 0, "More than 0 cell found")
+        if #available(iOS 10, *){
+            XCTAssert(collectionView.cells.count == 0, "cells found even though should not")
+        }else{
+            XCTAssert(!collectionView.cells.element(boundBy: 0).isHittable, "cells found even though should not")
+        }
         
         let cancelButton = movyHomeviewNavigationBar.buttons["Cancel"]
         cancelButton.tap()
         
-        XCTAssert(collectionView.cells.count == 1, "More than 1 cell found")
+        if #available(iOS 10, *){
+            XCTAssert(collectionView.cells.count == 1, "More than 1 cells found")
+        }else{
+            XCTAssert(collectionView.cells.element(boundBy: 0).isHittable, "More than 1 cells found")
+        }
     }
     
 }
