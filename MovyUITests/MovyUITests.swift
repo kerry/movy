@@ -7,20 +7,19 @@
 //
 
 import XCTest
+import SBTUITestTunnel
 
 class MovyUITests: XCTestCase {
         
+    var app: SBTUITunneledApplication!
+    
     override func setUp() {
         super.setUp()
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        continueAfterFailure = true
         
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = SBTUITunneledApplication()
+        
     }
     
     override func tearDown() {
@@ -28,9 +27,71 @@ class MovyUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLoadMoreWorstCase() {
+        app.launchTunnel { 
+            self.app.stubRequests(matching: SBTRequestMatch.url("(.*)themoviedb(.*)"), return: "no response".data(using: String.Encoding.utf8)!, contentType: "application/json", returnCode: 404, responseTime: 0.5)
+
+        }
+        
+        app.buttons["Load more"].tap()
+        
+        XCTAssert(app.staticTexts["Error loading movies"].exists, "HUD not shown")
+        
+        app.stubRequestsRemoveAll()
+    }
+    
+    func testResetAnotherSortView(){
+        let collectionView = app.collectionViews.element(boundBy: 0)
+
+        let filePath = Bundle(for: type(of: self)).path(forResource: "responseSingle", ofType: "json")
+        var returnData:Data!
+        do{
+            returnData = try Data.init(contentsOf: URL(fileURLWithPath: filePath!))
+        }catch{
+            
+        }
+        
+        app.launchTunnel {
+            self.app.stubRequests(matching: SBTRequestMatch.url("(.*)themoviedb.org\\/3\\/movie\\/popular.*"), return: returnData, contentType: "application/json", returnCode: 200, responseTime: 0.5)
+            self.app.stubRequests(matching: SBTRequestMatch.url("(.*)themoviedb.org\\/3\\/movie\\/top_rated.*"), return: "no response".data(using: String.Encoding.utf8)!, contentType: "application/json", returnCode: 404, responseTime: 0)
+            
+        }
+        
+        XCTAssert(collectionView.cells.count == 1, "More than 1 cell found")
+        
+        app.buttons["Top Rated"].tap()
+        
+        XCTAssert(collectionView.cells.count == 0, "cells found even though should not")
+        
+        app.stubRequestsRemoveAll()
+    }
+    
+    func testCancelSearchButton(){
+        let collectionView = app.collectionViews.element(boundBy: 0)
+        
+        let filePath = Bundle(for: type(of: self)).path(forResource: "responseSingle", ofType: "json")
+        var returnData:Data!
+        do{
+            returnData = try Data.init(contentsOf: URL(fileURLWithPath: filePath!))
+        }catch{
+            
+        }
+        
+        app.launchTunnel {
+            self.app.stubRequests(matching: SBTRequestMatch.url("(.*)themoviedb.org\\/3\\/movie\\/popular.*"), return: returnData, contentType: "application/json", returnCode: 200, responseTime: 0.5)            
+        }
+        
+        let movyHomeviewNavigationBar = app.navigationBars["Movy.HomeView"]
+        let searchMoviesSearchField = movyHomeviewNavigationBar.searchFields["Search movies"]
+        searchMoviesSearchField.tap()
+        searchMoviesSearchField.typeText("captain")
+        
+        XCTAssert(collectionView.cells.count == 0, "More than 0 cell found")
+        
+        let cancelButton = movyHomeviewNavigationBar.buttons["Cancel"]
+        cancelButton.tap()
+        
+        XCTAssert(collectionView.cells.count == 1, "More than 1 cell found")
     }
     
 }

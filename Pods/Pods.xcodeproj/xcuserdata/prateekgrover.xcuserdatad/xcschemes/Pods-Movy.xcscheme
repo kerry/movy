@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25A04C3A756550B72FFB5BD09C44807E"
+               BlueprintIdentifier = "23C2B2648F4AF4D5B05C59E66F79E907"
                BuildableName = "Pods_Movy.framework"
                BlueprintName = "Pods-Movy"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25A04C3A756550B72FFB5BD09C44807E"
+            BlueprintIdentifier = "23C2B2648F4AF4D5B05C59E66F79E907"
             BuildableName = "Pods_Movy.framework"
             BlueprintName = "Pods-Movy"
             ReferencedContainer = "container:Pods.xcodeproj">

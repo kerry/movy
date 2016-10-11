@@ -1,10 +1,14 @@
 PODS:
-  - Alamofire (4.0.0)
+  - Alamofire (4.0.1)
   - AlamofireObjectMapper (4.0.0):
     - Alamofire (~> 4.0)
     - ObjectMapper (~> 2.0)
+  - FXKeychain (1.5.3)
+  - GCDWebServer (3.3.3):
+    - GCDWebServer/Core (= 3.3.3)
+  - GCDWebServer/Core (3.3.3)
   - MBProgressHUD (1.0.0)
-  - ObjectMapper (2.0.0)
+  - ObjectMapper (2.1.0)
   - OHHTTPStubs (5.2.1):
     - OHHTTPStubs/Default (= 5.2.1)
   - OHHTTPStubs/Core (5.2.1)
@@ -21,6 +25,10 @@ PODS:
   - OHHTTPStubs/Swift (5.2.1):
     - OHHTTPStubs/Core
   - ReachabilitySwift (3)
+  - SBTUITestTunnel/Client (1.0.8)
+  - SBTUITestTunnel/Server (1.0.8):
+    - FXKeychain
+    - GCDWebServer (~> 3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -29,13 +37,20 @@ DEPENDENCIES:
   - OHHTTPStubs
   - OHHTTPStubs/Swift
   - ReachabilitySwift (~> 3)
+  - SBTUITestTunnel/Client
+  - SBTUITestTunnel/Server
 
 SPEC CHECKSUMS:
-  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
+  FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
+  GCDWebServer: 1c39a1f0763e4eb492bee021e4270fce097d3555
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+  ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
   OHHTTPStubs: 3a42f25c00563b71355ac73112ba2324e9e6cef4
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  SBTUITestTunnel: 80bbf2047258b9a9d735bc17664e97a3012d6632
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 1a58ab37c94357fc9616f3bd95179eba29789dba
+
+COCOAPODS: 1.0.1

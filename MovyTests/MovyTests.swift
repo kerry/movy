@@ -81,6 +81,25 @@ class MovyTests: XCTestCase {
         OHHTTPStubs.removeAllStubs()
     }
     
+    func testGetMovieListWorstCase(){
+        let notConnectedError = NSError(domain:NSURLErrorDomain, code:Int(CFNetworkErrors.cfurlErrorNotConnectedToInternet.rawValue), userInfo:nil)
+        
+        _ = stub(condition: isHost("api.themoviedb.org")) { _ in
+            return OHHTTPStubsResponse(error: notConnectedError)
+        }
+        
+        let responseArrived = self.expectation(description: "response of async request has arrived")
+        self.restService.getMovieListByPopularity(sortOrder: SortOrder.popularity, page: 1) { (response:MovieListResponseDto?, error:Error?) in
+            XCTAssertNotNil(error)
+            XCTAssertNil(response)
+            responseArrived.fulfill()
+        }
+        waitForExpectations(timeout: 3) { (error:Error?) in
+            XCTAssertNil(error, "\(error)")
+        }
+        OHHTTPStubs.removeAllStubs()
+    }
+    
     func testGetImage(){
         _ = stub(condition: isHost("image.tmdb.org")) { _ in
             
