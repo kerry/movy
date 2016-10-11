@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showDialogService.setCurrentContext(context: self.view)
-        self.initializeMovieList()
+        self.loadMoreMovies()
         self.setupSort()
         self.initializeSearchController()
     }
@@ -46,14 +46,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func initializeMovieList(){
-        self.showDialogService.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE.localized)
-        self.movieViewModel.updateMovies(shouldFilter: false, queryText: nil) {[weak self] (success:Bool) in
-            self?.showDialogService.hideHUD()
-            self?.reloadMoviesCollectionView()
-        }
     }
     
     func setupSort(){
@@ -144,7 +136,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func loadMoreMovies(){
         self.showDialogService.showHUD(message: FETCHING_MOVIES_LOADER_MESSAGE.localized)
         self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText) {[weak self] (success:Bool) in
-            self?.showDialogService.hideHUD()
+            if success{
+                self?.showDialogService.hideHUD()
+            }
             self?.reloadMoviesCollectionView()
         }
     }

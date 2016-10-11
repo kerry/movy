@@ -40,8 +40,8 @@ extension HomeViewController : UISearchResultsUpdating, UISearchBarDelegate{
             self.movieViewModel.updateMovies(shouldFilter: true, queryText: self.queryText, fetchSuccess: {[weak self] (success:Bool) in
                 if success{
                     self?.showDialogService.hideHUD()
-                    self?.reloadMoviesCollectionView()
                 }
+                self?.reloadMoviesCollectionView()
             })
         }
     }

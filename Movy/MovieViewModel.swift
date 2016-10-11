@@ -30,7 +30,14 @@ class MovieViewModel{
     
     func updateMovies(shouldFilter:Bool, queryText:String?, fetchSuccess:@escaping (Bool) -> Void){
         
+        if self.currentMovieListState.currentPage == 1{
+            //this means that it should be a fresh search
+            self.fullMovieList = []
+            self.movieListToDisplay = []
+        }
+        
         if !reachabilityInstance.isReachable(){
+            fetchSuccess(false)
             NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:NETWORK_UNAVAILABLE.localized])
             return
         }
@@ -38,14 +45,10 @@ class MovieViewModel{
         self.fetchMovies(movieListState: self.currentMovieListState) {[weak self] (movieItemList:[MovieItem]?, error:Error?) in
             if let strongSelf = self{
                 if error == nil && movieItemList != nil{
-                    //notify about more movies loaded
-                    if strongSelf.currentMovieListState.currentPage == 1{
-                        //this means that it should be a fresh search
-                        strongSelf.fullMovieList = []
-                    }
                     
                     if movieItemList!.count == 0{
                         //empty list retrieved
+                        fetchSuccess(false)
                         NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:NO_MORE_MOVIES_FOUND_MESSAGE.localized])
                         return
                     }
@@ -60,6 +63,7 @@ class MovieViewModel{
                     
                     if strongSelf.movieListToDisplay.count == 0{
                         //empty list retrieved
+                        fetchSuccess(false)
                         NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:NO_MATCHING_MOVIES_FOUND_MESSAGE.localized])
                         return
                     }
@@ -69,6 +73,7 @@ class MovieViewModel{
                     fetchSuccess(true)
                 }else{
                     //show error in view that movie items could not be fetched
+                    fetchSuccess(false)
                     NotificationCenter.default.post(name: MovieViewModel.onError, object: nil, userInfo: [ERROR_NOTIFICATION_MESSAGE_KEY:ERROR_LOADING_MOVIES_MESSAGE.localized])
                 }
             }
